@@ -1,0 +1,10 @@
+azaer@gmail.com -> aaaz -> Membre
+thomas@email.com -> thomas -> Client
+baba.abdelwaheb@gmail.com -> 123456 -> Client
+baba.abdelwaheb@gmail.com -> 123456 -> Client
+b.hounza@laposte.net -> bittan -> Client
+bittan@live.fr -> azerty123 -> Client
+f.sananes@email.com -> sananes -> Client
+f.sananes@email.com -> sananes -> Client
+alex.member@email.com -> alex -> Client
+alex.matousek@email.com -> alex -> Membre

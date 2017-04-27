@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1488479832 source:c:\users\brice\desktop\meteo\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+
+1488640933 source:c:\wamp\www\pds\meteo\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<winsock2.h>
+	<MYSQL/mysql.h>
+

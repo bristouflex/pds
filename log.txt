@@ -1,0 +1,15 @@
+azaer@gmail.com -> aaaz -> Membre
+thomas@email.com -> thomas -> Client
+baba.abdelwaheb@gmail.com -> 123456 -> Client
+baba.abdelwaheb@gmail.com -> 123456 -> Client
+b.hounza@laposte.net -> bittan -> Client
+bittan@live.fr -> azerty123 -> Client
+mako@live.fr -> mako -> Client
+mako@live.fr -> mako -> Client
+briceleouf@live.fr -> azerty123 -> Client
+briceleouf@live.fr -> azerty123 -> Membre
+mako@live.fr -> mako -> Client
+mako@live.fr -> mako -> Client
+mako@live.fr -> mako -> Administrateur
+mako@live.fr -> mako -> Administrateur
+mako@live.fr -> mako -> Client

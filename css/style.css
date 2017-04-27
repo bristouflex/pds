@@ -1,0 +1,16 @@
+body{
+    background-image: url(../images/avion2.jpg);
+    background-repeat:no-repeat;
+    background-size: cover;
+}
+
+.content-background{
+    background-color: rgba(127, 127, 127, 0.5);  
+    color: white;
+}
+
+.register-form{
+    width: 1000px;
+    margin: 0 auto;
+}
+
