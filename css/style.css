@@ -17,3 +17,8 @@ body{
 .tab-pane {
     min-height: 400px;
 }
+
+.entreprise{
+    color: white;
+    font-size: 24px;
+}

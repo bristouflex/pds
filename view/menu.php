@@ -2,23 +2,26 @@
 	<div class="menu_box">
 		<h3 class="menu_head">Menu</h3>
 		<ul class="nav">
-			<li><a href="apparel.html">About</a></li>
-			<li><a href="apparel.html">Apparel</a></li>
-			<li><a href="apparel.html">Shape Apparel</a></li>
-			<li><a href="apparel.html">Windsurf</a></li>
-			<li><a href="apparel.html">Kitesurf</a></li>
-			<li><a href="apparel.html">Accessories</a></li>
-			<li><a href="apparel.html">Sale</a></li>
-			<li><a href="apparel.html">Brands</a></li>
-			<li><a href="apparel.html">Blog</a></li>
-			<li><a href="apparel.html">Gadgets</a></li>
-			<li><a href="contact.html">Contact</a></li>
+			<li><a href="money.php">Ajouter du crédit</a></li>
+			<li><a href="historiquetransaction.php">Historique Transactions</a></li>
+            <?php
+            if ( $_SESSION["user"]->getIsMember() == 0 ) {
+                echo '<li><a href="buyservice.php">Demande de service</a></li>';
+                echo '<li><a href="myservice.php">Mes services</a></li>';
+            }
+            if ( $_SESSION["user"]->getIsMember() == 1 ) {
+                echo '<li><a href="buyactivite.php">Souscrire à une activité</a></li>';
+                echo '<li></li><br><a href="myactivity.php">Mes activités</a></li>';
+            }
+            ?>
+            <li><a href="messages.php">Contacter un administrateur</a></li>
+            <li><a href="myinfo.php">Mes informations personnelles OK</a></li>
 		</ul>
-	</div>
-	<div class="side_banner">
-		<div class="banner_img"><img src="images/pic9.jpg" class="img-responsive" alt=""/></div>
-		<div class="banner_holder">
-			<h3>Now <br> is <br> Open!</h3>
-		</div>
+
+
+
+
+
+
 	</div>
 </div>

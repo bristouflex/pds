@@ -7,11 +7,10 @@ require "init.php";
 	<head>
 		<meta charset="utf-8">
 		<title>AEN login</title>
-		<meta name="Description" lang="en" content="Bienvenue sur le site QuizAndCo">
+		<meta name="Description" lang="en" content="Page de connexion">
 	</head>
 	<body>
 		<h1>AEN - Connexion</h1>
-		<a href="index.html">Retour</a>
 		<a href="register.php">Inscription</a><br><br>
 		<b>Veuillez entrer vos identifiants.</b><br>
 		

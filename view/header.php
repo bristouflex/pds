@@ -23,33 +23,18 @@
 	<div class="container">
 		<div class="header-top">
 			<div class="logo">
-				<a href="index.html"><img src="images/logo.png" alt=""/></a>
+				<a href="login.php"><img src="images/aenLogo.png" alt=""/></a>
 			</div>
 			<div class="header_right">
-				<ul class="social">
-					<li><a href=""> <i class="fb"> </i> </a></li>
-					<li><a href=""><i class="tw"> </i> </a></li>
-					<li><a href=""><i class="utube"> </i> </a></li>
-					<li><a href=""><i class="pin"> </i> </a></li>
-					<li><a href=""><i class="instagram"> </i> </a></li>
-				</ul>
-				<div class="lang_list">
-					<select tabindex="4" class="dropdown">
-						<option value="" class="label" value="">En</option>
-						<option value="1">English</option>
-						<option value="2">French</option>
-						<option value="3">German</option>
-					</select>
-				</div>
-				<div class="clearfix"></div>
+               <!-- <br><a href="logout.php">Deconnexion</a> -->
 			</div>
 			<div class="clearfix"></div>
 		</div>
 		<div class="banner_wrap">
 			<div class="bannertop_box">
 				<ul class="login">
-					<li class="login_text"><a href="login.html">Login</a></li>
-					<li class="wish"><a href="checkout.html">Wish List</a></li>
+					<li class="login_text"><a href="logout.php">Logout</a></li>
+					<li class="wish"><a href="online.php">Accueil</a></li>
 					<div class='clearfix'></div>
 				</ul>
 				<div class="cart_bg">
@@ -71,14 +56,17 @@
 					<input type="submit" value="">
 				</div>
 				<div class="welcome_box">
-					<h2>Welcome to windsur</h2>
-					<p>It is a long established fact that a reader will be distracted by the readable content of a page</p>
+                    <?php
+                        welcome();
+                        verifDate(); // verifie si la date d'aujourdhui est en bdd
+                       // printMeteo(); // affiche la meteo
+                        showmoney();
+                    ?>
 				</div>
 			</div>
 			<div class="banner_right">
-				<h1>Your kind of<br>Classes</h1>
+				<h1>Bienvenue <br>chez AEN</h1>
 				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.</p>
-				<a href="#" class="banner_btn">Buy Now</a>
 			</div>
 			<div class='clearfix'></div>
 		</div>

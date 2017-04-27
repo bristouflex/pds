@@ -138,6 +138,7 @@ function login($email, $pwd, $isMember) {
         $_SESSION["panier"] = new Panier();
         header("Location: online.php");
     } else {
+        header("Location: online.php");
         if ($isMember == 0) {
             $isMember = "Client";
         }if ($isMember == 1) {
@@ -203,7 +204,7 @@ function loginadmin($email, $pwd) {
 
 function printMeteo() {
     $i = 0;
-    echo "<br><br>";
+    echo "<br>";
     echo "Meteo :<br><br>";
     echo "<table border=1 CELLPADDING=5>";
     $date = date("Y-m-d");
@@ -244,11 +245,11 @@ function verifDate() {
 function welcome() {
     $isMember = intToMember();
     $bdd = connectBdd();
-    $query = $bdd->prepare("SELECT prenom,nom FROM inscrit WHERE email=:email AND isMember=:isMember");
+    $query = $bdd->prepare("SELECT prenom FROM inscrit WHERE email=:email AND isMember=:isMember");
     $query->execute([ "email" => $_SESSION['user']->getEmail(), "isMember" => $_SESSION['user']->getIsMember()]);
     $infos = $query->fetch();
-    echo "<b>Compte : <i>" . $infos[1] . " " . $infos[0] . "</i></b><br>";
-    echo "<b>Compte de type : <i>" . $isMember . "</i></b>";
+    echo "<b>Bienvenue</b> : <i>" . $infos[0] . "</i><br>";
+    echo "<b>Compte de type :</b> <i>" . $isMember . "</i>";
 }
 
 function intToMember() {
@@ -272,7 +273,7 @@ function memberToInt() {
 }
 
 function showmoney() {
-    echo "<br><b>Votre credit est de : " . $_SESSION["user"]->getCredit() . " €</b>";
+    echo "<br><b>Votre credit est de : </b>" . $_SESSION["user"]->getCredit() . " €";
 }
 
 function welcomeadmin() {
