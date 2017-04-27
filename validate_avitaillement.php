@@ -20,7 +20,7 @@ if($find == 0){
     unset($_SESSION["panier"][3]);
 }
 if ($error != 1 && $find == 1) {
-    $_SESSION["panier"][3] = array();
-    $_SESSION["panier"][3] = [$_POST["essence"], $_POST["debut"], $prix];
+    $_SESSION["panier"]-> setAvitaillement(new Avitaillement($_POST["essence"], $_POST["debut"], $prix)) ;
+  //  $_SESSION["panier"][3] = [$_POST["essence"], $_POST["debut"], $prix];
 }
 ?>

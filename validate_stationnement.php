@@ -51,7 +51,8 @@ if(alreadyLanded($_POST["debut"]) != 1){
     $error = 1;
 }
 if ($error != 1) {
-    $_SESSION["panier"][1] = [ $_POST["abris"], $_POST["categorie"], $_POST["debut"], $_POST["fin"], $prix];
+      $_SESSION["panier"]->setStationnement(new Stationnement($_POST["abris"], $_POST["categorie"], $_POST["debut"], $_POST["fin"], $prix));
+  //  $_SESSION["panier"][1] = [ $_POST["abris"], $_POST["categorie"], $_POST["debut"], $_POST["fin"], $prix];
 }else {
     unset($_SESSION["panier"][1]);
 }

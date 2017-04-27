@@ -1,5 +1,5 @@
 <?php
-	
+
 	$list_of_errors = [
 						1 => "Email invalide", // email non conforme (accents, caractères spéciaux)
 						2 => "Email deja utilise pour ce type de compte", // email déjà présent pour le compte client ou membre
@@ -15,7 +15,7 @@
 						12 =>"Mot de passe errone",
 						13 => "Echec de l\'upload !",
 						14 => "Le fichier est trop gros..."
-						
+
 						];
 
 	$list_of_genre = [1=> "Homme", 2=> "Femme"];
@@ -23,7 +23,7 @@
 
 
  	define("USERBDD", "root");
- 	define("MDPBDD", "");
+ 	define("MDPBDD", "root");
  	define("HOSTBDD", "localhost");
  	define("NAMEBDD", "pds");
 

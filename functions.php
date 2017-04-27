@@ -1,5 +1,8 @@
 <?php
-require_once 'User.php';
+
+require_once 'Classes/User.php';
+require_once 'Classes/Panier.php';
+
 function connectBdd() {
     try {
         $bdd = new PDO('mysql:dbname=' . NAMEBDD . ';host=' . HOSTBDD, USERBDD, MDPBDD);
@@ -132,7 +135,7 @@ function login($email, $pwd, $isMember) {
     //Vérifier que le mot de passe chiffré correspond à $pwd grace a la fonction password_verify()
     if (password_verify($pwd, $hash)) {
         $_SESSION["user"] = new User($resultat["id"], $email, $resultat["credit"], $isMember);
-        //echo $_SESSION["user"];
+        $_SESSION["panier"] = new Panier();
         header("Location: online.php");
     } else {
         if ($isMember == 0) {
@@ -148,7 +151,7 @@ function login($email, $pwd, $isMember) {
 }
 
 function logout() {
-    unset($_SESSION['user']);
+	session_destroy();
     header("Location: index.php");
 }
 

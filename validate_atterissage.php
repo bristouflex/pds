@@ -34,13 +34,10 @@ if(landingPossible($_POST["debut"]) != 1){
 }
 $prix += $verif[0]; // redevance balisage
 
-
-
-
 if ($error != 1) {
-    $_SESSION["panier"][0] = array();
-    $_SESSION["panier"][0] = [ $_POST['categorie'], $verif[0], $_POST["avion"], $_POST["debut"], $prix];
+    $_SESSION["panier"]->setAtterissage(new Atterissage($_POST['categorie'], $verif[0],  $_POST["avion"], $prix, $_POST["debut"], $verif[0]));
+  //  $_SESSION["panier"][0] = [ $_POST['categorie'], $verif[0], $_POST["avion"], $_POST["debut"], $prix];
 }else {
-    unset($_SESSION["panier"][0]);
+    $_SESSION["panier"]->setAtterissage(null);
 }
 ?>

@@ -3,249 +3,240 @@ require "init.php";
 
 $price = 0;
 
-$bdd=connectBdd();
+$bdd = connectBdd();
 
-if(isset($_SESSION['panier'][0])){
-	$price += $_SESSION['panier'][0][4];
+if ($_SESSION['panier']->getAtterissage() ) {
+	$price += $_SESSION['panier']->getAtterissage()->getPrix();
 }
-if(isset($_SESSION['panier'][1])){
-	$price += $_SESSION['panier'][1][4];
+if ($_SESSION['panier']->getStationnement() ) {
+	$price += $_SESSION['panier']->getStationnement()->getPrix();
 }
-if(isset($_SESSION['panier'][2])){
-	$price += $_SESSION['panier'][2][2];
+if ($_SESSION['panier']->getNettoyage() ) {
+	$price += $_SESSION['panier']->getNettoyage()->getPrix();
 }
-if(isset($_SESSION['panier'][3])){
-	$price += $_SESSION['panier'][3][2];
+if ($_SESSION['panier']->getAvitaillement() ) {
+	$price += $_SESSION['panier']->getAvitaillement()->getPrix();
 }
-if(isset($_SESSION['panier'][4])){
-    $price += $_SESSION['panier'][4][2];
+if ($_SESSION['panier']->getParachute() ) {
+	$price += $_SESSION['panier']->getParachute()->getPrix();
 }
-if(isset($_SESSION['panier'][5])){
-    $price += $_SESSION['panier'][5][1];
+if ($_SESSION['panier']->getLocationUlm() ) {
+	$price += $_SESSION['panier']->getLocationUlm()->getPrix();
 }
-if(isset($_SESSION['panier'][6])){
-    $price += $_SESSION['panier'][6][2];
+if ($_SESSION['panier']->getBapteme() ) {
+	$price += $_SESSION['panier']->getBapteme()->getPrix();
 }
-if(isset($_SESSION['panier'][7])){
-    $price += $_SESSION['panier'][7][1];
-}
-
-
-if(isset($_SESSION['panier'][0]) || isset($_SESSION['panier'][1]) || isset($_SESSION['panier'][2]) || isset($_SESSION['panier'][3]) || isset($_SESSION['panier'][4]) || isset($_SESSION['panier'][5]) || isset($_SESSION['panier'][6]) || isset($_SESSION['panier'][7])){
-    $path = "factures/".$_SESSION['user']->getEmail()."_".date('Y-m-d_H-i-s').".pdf";
-
-$query = $bdd->prepare(" INSERT INTO facture (idUser,adresseIP,montant,chemin,ispaid)
-	VALUES (:idUser, :adresseIP, :montant, :chemin, :ispaid)");
-        $query->execute( [
-    	   "idUser" => $_SESSION['user']->getId(),
-           "adresseIP" => $_SERVER["REMOTE_ADDR"],
-    	   "montant" => $price,
-    	   "chemin" => $path,
-           "ispaid" => 0
-            ]);
-
-$query = $bdd->prepare("SELECT MAX(id) FROM facture WHERE idUser = :id");
-$query->execute(["id" => $_SESSION['user']->getId()]);
-$verif = $query->fetch();
-$factureID = $verif[0];
-}
-
-if(isset($_SESSION['panier'][0])){ // Atterissage
-	//$_SESSION['panier'][0][0]; // acoustique
-	//$_SESSION['panier'][0][1]; // balisage
-	//$_SESSION['panier'][0][2]; // avion
-	//$_SESSION['panier'][0][3]; // debut
-
-
-	$query = $bdd->prepare(" INSERT INTO options_atterissage (grpacoustique,frais_dossier,avion,facture,debut)
-	VALUES (:grpacoustique, :frais_dossier, :avion, :facture, :debut)");
-        $query->execute( [
-    	   "grpacoustique" => $_SESSION['panier'][0][0],
-           "frais_dossier" => 0,
-    	   "avion" => $_SESSION['panier'][0][2],
-    	   "facture" => $factureID,
-           "debut" => $_SESSION['panier'][0][3]
-            ]);
-}
-
-if(isset($_SESSION['panier'][1])){ // Stationnement
-	//$_SESSION['panier'][1][0]; // abris
-	//$_SESSION['panier'][1][1]; // categorie
-	//$_SESSION['panier'][1][2]; // debut
-	//$_SESSION['panier'][1][3]; // fin
-
-
-	$query = $bdd->prepare("INSERT INTO options_stationnement (abris,categorie,facture,debut,fin)
-	VALUES (:abris, :categorie, :facture, :debut, :fin)");
-        $query->execute( [
-    	   "abris" => $_SESSION['panier'][1][0],
-           "categorie" => $_SESSION['panier'][1][1],
-    	   "facture" => $factureID,
-    	   "debut" => $_SESSION['panier'][1][2],
-           "fin" => $_SESSION['panier'][1][3]
-            ]);
-}
-
-if(isset($_SESSION['panier'][2])){ // Nettoyage
-	//$_SESSION['panier'][2][0]; // produit
-	//$_SESSION['panier'][2][1]; // debut
-
-
-
-	$query = $bdd->prepare("INSERT INTO options_nettoyage (produits,facture,debut)
-	VALUES (:produits, :facture, :debut)");
-        $query->execute( [
-    	   "produits" => $_SESSION['panier'][2][0],
-    	   "facture" => $factureID,
-    	   "debut" => $_SESSION['panier'][2][1]
-            ]);
-}
-
-if(isset($_SESSION['panier'][3])){ // Avitaillement
-	//$_SESSION['panier'][3][0]; // essence
-	//$_SESSION['panier'][3][1]; // debut
-
-
-
-	$query = $bdd->prepare("INSERT INTO options_avitaillement (produit,facture,debut)
-	VALUES (:produit, :facture, :debut)");
-        $query->execute( [
-    	   "produit" => $_SESSION['panier'][3][0],
-    	   "facture" => $factureID,
-    	   "debut" => $_SESSION['panier'][3][1]
-            ]);
-}
-
-if(isset($_SESSION['panier'][4])){ // bapteme
-    $query = $bdd->prepare("INSERT INTO options_bapteme (instructeur,date,facture,bapteme)
-    VALUES (:instructeur, :date, :facture, :bapteme)");
-    $query->execute( [
-    "instructeur" => $_SESSION['panier'][4][1],
-    "date" => $_SESSION['panier'][4][3],
-    "facture" => $factureID,
-    "bapteme" => $_SESSION['panier'][4][0]
-     ]);
-}
-
-if(isset($_SESSION['panier'][5])){ // parachute
-    $query = $bdd->prepare("INSERT INTO options_parachute (parachute,debut,facture)
-    VALUES (:parachute, :debut, :facture)");
-    $query->execute( [
-    "parachute" => $_SESSION['panier'][5][1],
-    "debut" => $_SESSION['panier'][5][2],
-    "facture" => $factureID
-     ]);
-}
-
-if(isset($_SESSION['panier'][6])){ // lecon
-    $query = $bdd->prepare("INSERT INTO options_lecon (instructeur, date, lecon, facture)
-        VALUES (:instructeur, :date, :lecon, :facture)");
-    $query->execute( [
-    "instructeur" => $_SESSION["panier"][6][1],
-    "date" => $_SESSION["panier"][6][3],
-    "lecon" => $_SESSION["panier"][6][0],
-    "facture" => $factureID
-     ]);
+if ($_SESSION['panier']->getLecon() ) {
+	$price += $_SESSION['panier']->getLecon()->getPrix();
 }
 
 
-if(isset($_SESSION['panier'][7])){ // location_ulm
-$query = $bdd->prepare("INSERT INTO options_location_ulm (location_ulm,date,facture)
-        VALUES (:location_ulm,:date,:facture)");
-    $query->execute( [
-    "location_ulm" => $_SESSION["panier"][7][0],
-    "date" => $_SESSION["panier"][7][2],
-    "facture" => $factureID
-     ]);
+if (!$_SESSION['panier']->isEmpty() ) {
+	$path = "factures/" . $_SESSION['user']->getEmail() . "_" . date( 'Y-m-d_H-i-s' ) . ".pdf";
+
+	$query = $bdd->prepare( " INSERT INTO facture (idUser,adresseIP,montant,chemin,ispaid)
+	VALUES (:idUser, :adresseIP, :montant, :chemin, :ispaid)" );
+
+	$query->execute( [
+		"idUser"    => $_SESSION['user']->getId(),
+		"adresseIP" => $_SERVER["REMOTE_ADDR"],
+		"montant"   => $price,
+		"chemin"    => $path,
+		"ispaid"    => 0
+	] );
+
+	$query = $bdd->prepare( "SELECT MAX(id) FROM facture WHERE idUser = :id" );
+	$query->execute( [ "id" => $_SESSION['user']->getId() ] );
+	$verif     = $query->fetch();
+	$factureID = $verif[0];
+}
+
+if ($_SESSION['panier']->getAtterissage() ) { // Atterissage
+	//$_SESSION['panier']->getAtterissage()->getGrpAcou(); // acoustique
+	//$_SESSION['panier']->getAtterissage()[1]; // balisage
+	//$_SESSION['panier']->getAtterissage()[2]; // avion
+	//$_SESSION['panier']->getAtterissage()[3]; // debut
+
+
+	$query = $bdd->prepare( " INSERT INTO options_atterissage (grpacoustique,frais_dossier,avion,facture,debut)
+	VALUES (:grpacoustique, :frais_dossier, :avion, :facture, :debut)" );
+	$query->execute( [
+		"grpacoustique" => $_SESSION['panier']->getAtterissage()->getGrpAcou(),
+		"frais_dossier" => 0,
+		"avion"         => $_SESSION['panier']->getAtterissage()->getAvion(),
+		"facture"       => $factureID,
+		"debut"         => $_SESSION['panier']->getAtterissage()->getDebut()
+	] );
+}
+
+if ($_SESSION['panier']->getStationnement() ) { // Stationnement
+	//$_SESSION['panier']->getStationnement()->getAbris(); // abris
+	//$_SESSION['panier']->getStationnement()->getCategorie(); // categorie
+	//$_SESSION['panier']->getStationnement()[2]; // debut
+	//$_SESSION['panier']->getStationnement()[3]; // fin
+
+
+	$query = $bdd->prepare( "INSERT INTO options_stationnement (abris,categorie,facture,debut,fin)
+	VALUES (:abris, :categorie, :facture, :debut, :fin)" );
+	$query->execute( [
+		"abris"     => $_SESSION['panier']->getStationnement()->getAbris(),
+		"categorie" => $_SESSION['panier']->getStationnement()->getCategorie(),
+		"facture"   => $factureID,
+		"debut"     => $_SESSION['panier']->getStationnement()->getDebut(),
+		"fin"       => $_SESSION['panier']->getStationnement()->getFin()
+	] );
+}
+
+if ($_SESSION['panier']->getNettoyage() ) { // Nettoyage
+	//$_SESSION['panier']->getNettoyage()->[0]; // produit
+	//$_SESSION['panier']->getNettoyage()->[1]; // debut
+
+
+	$query = $bdd->prepare( "INSERT INTO options_nettoyage (produits,facture,debut)
+	VALUES (:produits, :facture, :debut)" );
+	$query->execute( [
+		"produits" => $_SESSION['panier']->getNettoyage()->getProduit(),
+		"facture"  => $factureID,
+		"debut"    => $_SESSION['panier']->getNettoyage()->getDebut()
+	] );
+}
+
+if ($_SESSION['panier']->getAvitaillement() ) { // Avitaillement
+	//$_SESSION['panier']->getAvitaillement()->[0]; // essence
+	//$_SESSION['panier']->getAvitaillement()->[1]; // debut
+
+	$query = $bdd->prepare( "INSERT INTO options_avitaillement (produit,facture,debut)
+	VALUES (:produit, :facture, :debut)" );
+	$query->execute( [
+		"produit" => $_SESSION['panier']->getAvitaillement()->getProduit(),
+		"facture" => $factureID,
+		"debut"   => $_SESSION['panier']->getAvitaillement()->getDebut()
+	] );
+}
+
+if ($_SESSION['panier']->getBapteme() ) { // bapteme
+	$query = $bdd->prepare( "INSERT INTO options_bapteme (instructeur,date,facture,bapteme)
+    VALUES (:instructeur, :date, :facture, :bapteme)" );
+	$query->execute( [
+		"instructeur" => $_SESSION['panier']->getBapteme()->getInstructeur(),
+		"date"        => $_SESSION['panier']->getBapteme()->getDate(),
+		"facture"     => $factureID,
+		"bapteme"     => $_SESSION['panier']->getBapteme()->getDate()
+	] );
+}
+
+if ($_SESSION['panier']->getParachute() ) { // parachute
+	$query = $bdd->prepare( "INSERT INTO options_parachute (parachute,debut,facture)
+    VALUES (:parachute, :debut, :facture)" );
+	$query->execute( [
+		"parachute" => $_SESSION['panier']->getParachute()->getParachute(),
+		"debut"     => $_SESSION['panier']->getParachute()->getDebut(),
+		"facture"   => $factureID
+	] );
+}
+
+if ($_SESSION['panier']->getLecon() ) { // lecon
+	$query = $bdd->prepare( "INSERT INTO options_lecon (instructeur, date, lecon, facture)
+        VALUES (:instructeur, :date, :lecon, :facture)" );
+	$query->execute( [
+		"instructeur" => $_SESSION["panier"]->getLecon()->getInstructeur(),
+		"date"        => $_SESSION["panier"] > getLecon()->getDate(),
+		"lecon"       => $_SESSION["panier"]->getLecon()->getLecon(),
+		"facture"     => $factureID
+	] );
+}
+
+
+if ($_SESSION['panier']->getLocationUlm() ) { // location_ulm
+	$query = $bdd->prepare( "INSERT INTO options_location_ulm (location_ulm,date,facture)
+        VALUES (:location_ulm,:date,:facture)" );
+	$query->execute( [
+		"location_ulm" => $_SESSION["panier"]->getLocationUlm()->getLocationUlm(),
+		"date"         => $_SESSION["panier"]->getLocationUlm()->getDate(),
+		"facture"      => $factureID
+	] );
 }
 
 ob_start();
 
-    echo "Facture Pour : " . $_SESSION['user']->getEmail() . "<br><br>";
-    echo "Fait le : " . date('Y-m-d H:i:s') . "<br><br>";
+echo "Facture Pour : " . $_SESSION['user']->getEmail() . "<br><br>";
+echo "Fait le : " . date( 'Y-m-d H:i:s' ) . "<br><br>";
 
-    if(isset($_SESSION['panier'][0])){
-    echo "Atterissage :<br><br>";
-    echo "Groupe Acoustique : " . $_SESSION['panier'][0][0] .  "<br>";
-    echo "Balisage : " . $_SESSION['panier'][0][1] . "<br>";
-    echo "Avion : " . $_SESSION['panier'][0][2] . "<br>";
-    echo "Debut : " . $_SESSION['panier'][0][3] . "<br>";
-    echo "Prix :" . $_SESSION['panier'][0][4] . "<br><br>";
+if ($_SESSION['panier']->getAtterissage() ) {
+	echo "Atterissage :<br><br>";
+	echo "Groupe Acoustique : " . $_SESSION['panier']->getAtterissage()->getGrpAcou() . "<br>";
+	echo "Balisage : " . $_SESSION['panier']->getAtterissage()->getBalisage() . "<br>";
+	echo "Avion : " . $_SESSION['panier']->getAtterissage()->getAvion() . "<br>";
+	echo "Debut : " . $_SESSION['panier']->getAtterissage()->getDebut() . "<br>";
+	echo "Prix :" . $_SESSION['panier']->getAtterissage()->getPrix() . "<br><br>";
     }
-    if(isset($_SESSION['panier'][1])){
-    echo "Stationnement :<br><br>";
-    echo "Abris : " . $_SESSION['panier'][1][0] .  "<br>";
-    echo "Categorie : " . $_SESSION['panier'][1][1] .  "<br>";
-    echo "Début : " . $_SESSION['panier'][1][2] .  "<br>";
-    echo "Fin : " . $_SESSION['panier'][1][3] .  "<br>";
-    echo "Prix :" . $_SESSION['panier'][1][4] . "<br><br>";
-    }
-    if(isset($_SESSION['panier'][2])){
-     echo "Nettoyage :<br><br>";
-     echo "Produit : " . $_SESSION['panier'][2][0] .  "<br>";
-     echo "Début : " . $_SESSION['panier'][2][1] .  "<br>";
-    echo "Prix :" . $_SESSION['panier'][2][2] . "<br><br>";
-    }
-    if(isset($_SESSION['panier'][3])){
-         echo "Avitaillement :<br><br>";
-     echo "Essence : " . $_SESSION['panier'][3][0] .  "<br>";
-     echo "Début : " . $_SESSION['panier'][3][1] .  "<br>";
-    echo "Prix :" . $_SESSION['panier'][3][2] . "<br><br>";
-    }
-    if(isset($_SESSION['panier'][4])){
-         echo "Bapteme :<br><br>";
-     echo "Bapteme de type : " . $_SESSION['panier'][4][0] .  "<br>";
-     echo "Instructeur : " . $_SESSION['panier'][4][1] .  "<br>";
-    echo "Début : " . $_SESSION['panier'][4][3] .  "<br>";
-    echo "Prix :" . $_SESSION['panier'][4][2] . "<br><br>";
-    }
-    if(isset($_SESSION['panier'][5])){
-         echo "Parachute :<br><br>";
-     echo "Parachute de type : " . $_SESSION['panier'][5][0] .  "<br>";
-    echo "Début : " . $_SESSION['panier'][5][2] .  "<br>";
-    echo "Prix :" . $_SESSION['panier'][5][1] . "<br><br>";
-    }
-     if(isset($_SESSION['panier'][6])){
-         echo "Lecon :<br><br>";
-     echo "Lecon de type : " . $_SESSION['panier'][6][0] .  "<br>";
-     echo "Instructeur : " . $_SESSION['panier'][6][1] .  "<br>";
-    echo "Début : " . $_SESSION['panier'][6][3] .  "<br>";
-    echo "Prix :" . $_SESSION['panier'][6][2] . "<br><br>";
-    }
-    if(isset($_SESSION['panier'][7])){
-         echo "Location :<br><br>";
-     echo "Location de type : " . $_SESSION['panier'][7][0] .  "<br>";
-    echo "Début : " . $_SESSION['panier'][7][2] .  "<br>";
-    echo "Prix :" . $_SESSION['panier'][7][1] . "<br><br>";
-    }
+if ($_SESSION['panier']->getStationnement() ) {
+	echo "Stationnement :<br><br>";
+	echo "Abris : " . $_SESSION['panier']->getStationnement()->getAbris() . "<br>";
+	echo "Categorie : " . $_SESSION['panier']->getStationnement()->getCategorie() . "<br>";
+	echo "Début : " . $_SESSION['panier']->getStationnement()->getDebut() . "<br>";
+	echo "Fin : " . $_SESSION['panier']->getStationnement()->getFin() . "<br>";
+	echo "Prix :" . $_SESSION['panier']->getStationnement()->getPrix() . "<br><br>";
+}
+if ($_SESSION['panier']->getNettoyage() ) {
+	echo "Nettoyage :<br><br>";
+	echo "Produit : " . $_SESSION['panier']->getNettoyage()->getProduit() . "<br>";
+	echo "Début : " . $_SESSION['panier']->getNettoyage()->getDebut() . "<br>";
+	echo "Prix :" . $_SESSION['panier']->getNettoyage()->getPrix() . "<br><br>";
+}
+if ($_SESSION['panier']->getAvitaillement() ) {
+	echo "Avitaillement :<br><br>";
+	echo "Essence : " . $_SESSION['panier']->getAvitaillement()->getProduit() . "<br>";
+	echo "Début : " . $_SESSION['panier']->getAvitaillement()->getDebut() . "<br>";
+	echo "Prix :" . $_SESSION['panier']->getAvitaillement()->getPrix() . "<br><br>";
+}
+if ($_SESSION['panier']->getBapteme() ) {
+	echo "Bapteme :<br><br>";
+	echo "Bapteme de type : " . $_SESSION['panier']->getBapteme()->getBapteme() . "<br>";
+	echo "Instructeur : " . $_SESSION['panier']->getBapteme()->getInstructeur() . "<br>";
+	echo "Début : " . $_SESSION['panier']->getBapteme()->getDate() . "<br>";
+	echo "Prix :" . $_SESSION['panier']->getBapteme()->getPrix() . "<br><br>";
+}
+if ($_SESSION['panier']->getParachute() ) {
+	echo "Parachute :<br><br>";
+	echo "Parachute de type : " . $_SESSION['panier']->getParachute()->getParachute() . "<br>";
+	echo "Début : " . $_SESSION['panier']->getParachute()->getDebut() . "<br>";
+	echo "Prix :" . $_SESSION['panier']->getParachute()->getPrix() . "<br><br>";
+}
+if ($_SESSION['panier']->getLecon() ) {
+	echo "Lecon :<br><br>";
+	echo "Lecon de type : " . $_SESSION['panier']->getLecon()->getLecon() . "<br>";
+	echo "Instructeur : " . $_SESSION['panier']->getLecon()->getInstructeur() . "<br>";
+	echo "Début : " . $_SESSION['panier']->getLecon()->getLecon() . "<br>";
+	echo "Prix :" . $_SESSION['panier']->getLecon()->getPrix() . "<br><br>";
+}
+if ($_SESSION['panier']->getLocationUlm() ) {
+	echo "Location :<br><br>";
+	echo "Location de type : " . $_SESSION['panier']->getLocationUlm()->getLocationUlm() . "<br>";
+	echo "Début : " . $_SESSION['panier']->getLocationUlm()->getDate() . "<br>";
+	echo "Prix :" . $_SESSION['panier']->getLocationUlm()->getPrix() . "<br><br>";
+}
 
-    if (isset($_SESSION['panier'][0]) || isset($_SESSION['panier'][1]) || isset($_SESSION['panier'][2]) || isset($_SESSION['panier'][3]) || isset($_SESSION['panier'][4]) || isset($_SESSION['panier'][5]) || isset($_SESSION['panier'][6]) || isset($_SESSION['panier'][7])) {
-        echo "Prix total : ".$price ."<br>";
-    }
-
+if (!$_SESSION['panier']->isEmpty()) {
+	echo "Prix total : " . $price . "<br>";
+}
     $content = ob_get_clean();
-   require_once("html2pdf/html2pdf.class.php");
-    try
-    {
-        $html2pdf = new HTML2PDF("P", "A4", "fr");
-      // $html2pdf->setModeDebug();
-        $html2pdf->setDefaultFont("Arial");
-        $html2pdf->writeHTML($content);
-        $html2pdf->Output($path,"F");
-    }
-    catch(HTML2PDF_exception $e) {
-        echo $e;
-        exit;
+    require_once( "html2pdf/html2pdf.class.php" );
+    try {
+	    $html2pdf = new HTML2PDF( "P", "A4", "fr" );
+	    // $html2pdf->setModeDebug();
+	    $html2pdf->setDefaultFont( "Arial" );
+	    $html2pdf->writeHTML( $content );
+	    $html2pdf->Output( $path, "F" );
+    } catch ( HTML2PDF_exception $e ) {
+	    echo $e;
+	    exit;
     }
 
-for($i=0;$i<8;$i++){
-    unset($_SESSION['panier'][$i]);
-}
+$_SESSION["panier"] = new Panier();
 
-if($_SESSION["user"]->getIsMember()){
-header('Location: myactivity.php');
-}else{
-header('Location: myservice.php');
+if ($_SESSION["user"]->getIsMember() ) {
+	header( 'Location: myactivity.php' );
+} else {
+	header( 'Location: myservice.php' );
 }
-
-?>

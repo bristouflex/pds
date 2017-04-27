@@ -22,6 +22,8 @@ if($find == 0){
     unset($_SESSION["panier"][2]);
 }
 if ($error != 1 && $find == 1) {
-    $_SESSION["panier"][2] = [$_POST["produit"], $_POST["debut"], $prix];
+
+    $_SESSION["panier"]->setNettoyage(new Nettoyage($_POST["produit"], $_POST["debut"], $prix));
+    //$_SESSION["panier"][2] = [$_POST["produit"], $_POST["debut"], $prix];
 }
 ?>

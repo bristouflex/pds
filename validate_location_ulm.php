@@ -32,8 +32,8 @@ $location = $_POST["location_ulm"];
 
 
 if ($error != 1) {
-    $_SESSION["panier"][7] = array();
-    $_SESSION["panier"][7] = [$location, $prix, $debut];
+    $_SESSION["panier"]-> setLocationUlm( new LocationUlm($location, $prix, $debut));
+  //  $_SESSION["panier"][7] = [$location, $prix, $debut];
 }else {
     unset($_SESSION["panier"][7]);
 }
