@@ -22,7 +22,7 @@ if ($_SESSION['panier']->getLocationUlm()) {
 	echo "<br>";
 	echo $_SESSION['panier']->getLocationUlm()->getPrix();
 	echo "<br>";
-	echo "<a href='destroybracket.php?inf=7'>Annuler ce panier</a><br>";
+	echo "<a href='destroybracket.php?type=locationUlm'>Annuler ce panier</a><br>";
 
 }
 
@@ -38,7 +38,7 @@ if ($_SESSION['panier']->getLecon()) {
 	echo "<br>";
 	echo $_SESSION['panier']->getLecon()->getPrix();
 	echo "<br>";
-	echo "<a href='destroybracket.php?inf=6'>Annuler ce panier</a><br>";
+	echo "<a href='destroybracket.php?type=lecon'>Annuler ce panier</a><br>";
 
 }
 
@@ -52,7 +52,7 @@ if ($_SESSION['panier']->getParachute()) {
 	echo "<br>";
 	echo $_SESSION['panier']->getParachute()->getPrix();
 	echo "<br>";
-	echo "<a href='destroybracket.php?inf=5'>Annuler ce panier</a><br>";
+	echo "<a href='destroybracket.php?type=parachute'>Annuler ce panier</a><br>";
 
 }
 
@@ -69,7 +69,7 @@ if ($_SESSION['panier']->getBapteme()) {
 	echo "<br>";
 	echo $_SESSION['panier']->getBapteme()->getPrix();
 	echo "<br>";
-	echo "<a href='destroybracket.php?inf=4'>Annuler ce panier</a><br>";
+	echo "<a href='destroybracket.php?type=bapteme'>Annuler ce panier</a><br>";
 
 }
 
@@ -83,7 +83,7 @@ if ($_SESSION['panier']->getAvitaillement()) {
 	echo "<br>";
 	echo $_SESSION['panier']->getAvitaillement()->getPrix();
 	echo "<br>";
-	echo "<a href='destroybracket.php?inf=3'>Annuler ce panier</a><br>";
+	echo "<a href='destroybracket.php?type=avitaillement'>Annuler ce panier</a><br>";
 
 }
 
@@ -97,7 +97,7 @@ if ($_SESSION['panier']->getNettoyage()) {
 	echo "<br>";
 	echo $_SESSION['panier']->getNettoyage()->getPrix();
 	echo "<br>";
-	echo "<a href='destroybracket.php?inf=2'>Annuler ce panier</a><br>";
+	echo "<a href='destroybracket.php?type=nettoyage'>Annuler ce panier</a><br>";
 
 }
 
@@ -115,7 +115,7 @@ if ($_SESSION['panier']->getStationnement()) {
 	echo "<br>";
 	echo $_SESSION['panier']->getStationnement()->getPrix();
 	echo "<br>";
-	echo "<a href='destroybracket.php?inf=1'>Annuler ce panier</a><br>";
+	echo "<a href='destroybracket.php?type=stationnement'>Annuler ce panier</a><br>";
 
 }
 
@@ -133,7 +133,7 @@ if ($_SESSION['panier']->getAtterissage()) {
 	echo "<br>";
 	echo $_SESSION['panier']->getAtterissage()->getPrix();
 	echo "<br>";
-	echo "<a href='destroybracket.php?inf=0'>Annuler ce panier</a><br>";
+	echo "<a href='destroybracket.php?type=atterissage'>Annuler ce panier</a><br>";
 
 }
 

@@ -1,7 +1,10 @@
 <?php
 require 'init.php';
 
-unset($_SESSION['panier'][$_GET['inf']]);
+$cartPropertySetter = 'set' . ucfirst($_GET['type']);
+
+$_SESSION['panier']->{$cartPropertySetter}(null);
+
 if($_SESSION["user"]->getIsMember()){
     header('Location: buyactivite.php');
 }else{
