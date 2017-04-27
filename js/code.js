@@ -1,3 +1,4 @@
-/*$(window).on("load", function() {
-	$("#accueil").css("min-height", $(window).height());         
-}).resize();*/
+$('#myTabs a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+})
