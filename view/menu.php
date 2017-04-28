@@ -11,7 +11,7 @@
             }
             if ( $_SESSION["user"]->getIsMember() == 1 ) {
                 echo '<li><a href="buyactivite.php">Souscrire à une activité</a></li>';
-                echo '<li></li><br><a href="myactivity.php">Mes activités</a></li>';
+                echo '<li><a href="myactivity.php">Mes activités</a></li>';
             }
             ?>
             <li><a href="messages.php">Contacter un administrateur</a></li>

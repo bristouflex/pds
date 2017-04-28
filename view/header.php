@@ -40,7 +40,7 @@
 				<div class="cart_bg">
 					<ul class="cart">
 						<a href="checkout.html">
-							<h4><i class="cart_icon"> </i><p>Cart: <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</p><div class="clearfix"> </div></h4>
+							<h4><i class="cart_icon"> </i><p>Panier: <span class=""><?php echo $_SESSION["panier"]->getTotal()."€"; ?></span> </p><div class="clearfix"> </div></h4>
 						</a>
 						<h5 class="empty"><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></h5>
 						<div class="clearfix"> </div>
