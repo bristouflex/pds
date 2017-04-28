@@ -15,7 +15,7 @@
             }
             ?>
             <li><a href="messages.php">Contacter un administrateur</a></li>
-            <li><a href="myinfo.php">Mes informations personnelles OK</a></li>
+            <li><a href="myinfo.php">Mes informations personnelles</a></li>
 		</ul>
 
 
