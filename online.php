@@ -22,23 +22,21 @@ require_once 'view/menu.php';
 
 <!-- CONTENU DE LA PAGE -->
     <div class="col-md-9">
-
-
-
-
-
-
         <h3 class="m_1">Nos Services</h3>
-        <div class="content_grid">
+
+
+        <?php
+        if ( $_SESSION["user"]->getIsMember() == 0 ) {
+            echo '<div class="content_grid">
             <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
-                <a href="single.html">
+                <a href="#">
                     <div class="inner_content clearfix">
                         <div class="product_image">
-                            <img src="images/pic1.jpg" class="img-responsive" alt=""/>
+                            <img src="images/atterrissage.jpg" class="img-responsive" alt=""/>
                             <a href="" class="button item_add item_1"> </a>
                             <div class="product_container">
                                 <div class="cart-left">
-                                    <p class="title">Lorem Ipsum 2015</p>
+                                    <p class="title">atterissage</p>
                                 </div>
                                 <span class="amount item_price">$45.00</span>
                                 <div class="clearfix"></div>
@@ -48,32 +46,31 @@ require_once 'view/menu.php';
                 </a>
             </div>
             <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
-                <a href="single.html">
+                <a href="#">
                     <div class="inner_content clearfix">
                         <div class="product_image">
-                            <img src="images/pic2.jpg" class="img-responsive" alt=""/>
+                            <img src="images/avitaillement.jpg" class="img-responsive" alt=""/>
                             <a href="" class="button item_add item_1"> </a>
                             <div class="product_container">
                                 <div class="cart-left">
-                                    <p class="title">Lorem Ipsum 2015</p>
+                                    <p class="title">avitaillement</p>
                                 </div>
                                 <span class="amount item_price">$45.00</span>
                                 <div class="clearfix"></div>
                             </div>
-                        </div>
-                        <div class="sale-box1"><span class="on_sale1 title_shop">New</span></div>
+                        </div>                        
                     </div>
                 </a>
             </div>
             <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem last_1">
-                <a href="single.html">
+                <a href="#">
                     <div class="inner_content clearfix">
                         <div class="product_image">
-                            <img src="images/pic3.jpg" class="img-responsive" alt=""/>
+                            <img src="images/nettoyage.png" class="img-responsive" alt=""/>
                             <a href="" class="button item_add item_1"> </a>
                             <div class="product_container">
                                 <div class="cart-left">
-                                    <p class="title">Lorem Ipsum 2015</p>
+                                    <p class="title">nettoyage</p>
                                 </div>
                                 <span class="amount item_price">$45.00</span>
                                 <div class="clearfix"></div>
@@ -83,17 +80,40 @@ require_once 'view/menu.php';
                 </a>
             </div>
             <div class="clearfix"></div>
-        </div>
-        <div class="content_grid">
+            </div>';
+            echo '<div class="content_grid">
             <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
-                <a href="single.html">
+                <a href="#">
                     <div class="inner_content clearfix">
                         <div class="product_image">
-                            <img src="images/pic4.jpg" class="img-responsive" alt=""/>
+                            <img src="images/stationnement.jpg" class="img-responsive" alt=""/>
                             <a href="" class="button item_add item_1"> </a>
                             <div class="product_container">
                                 <div class="cart-left">
-                                    <p class="title">Lorem Ipsum 2015</p>
+                                    <p class="title">stationnement</p>
+                                </div>
+                                <span class="amount item_price">$45.00</span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="clearfix"></div>
+        </div>';
+        }
+            if ( $_SESSION["user"]->getIsMember() != 0 ) {
+                echo '<div class="content_grid">
+            <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
+                <a href="#">
+                    <div class="inner_content clearfix">
+                        <div class="product_image">
+                            <img src="images/cours.png" class="img-responsive" alt=""/>
+                            <a href="" class="button item_add item_1"> </a>
+                            <div class="product_container">
+                                <div class="cart-left">
+                                    <p class="title">cours</p>
                                 </div>
                                 <span class="amount item_price">$45.00</span>
                                 <div class="clearfix"></div>
@@ -103,31 +123,31 @@ require_once 'view/menu.php';
                 </a>
             </div>
             <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
-                <a href="single.html">
+                <a href="#">
                     <div class="inner_content clearfix">
                         <div class="product_image">
-                            <img src="images/pic5.jpg" class="img-responsive" alt=""/>
+                            <img src="images/bapteme.png" class="img-responsive" alt=""/>
                             <a href="" class="button item_add item_1"> </a>
                             <div class="product_container">
                                 <div class="cart-left">
-                                    <p class="title">Lorem Ipsum 2015</p>
+                                    <p class="title">bapteme de l\'air</p>
                                 </div>
                                 <span class="amount item_price">$45.00</span>
                                 <div class="clearfix"></div>
                             </div>
-                        </div>
+                        </div>                       
                     </div>
                 </a>
             </div>
             <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem last_1">
-                <a href="single.html">
+                <a href="#">
                     <div class="inner_content clearfix">
                         <div class="product_image">
-                            <img src="images/pic6.jpg" class="img-responsive" alt=""/>
+                            <img src="images/parachute.jpg" class="img-responsive" alt=""/>
                             <a href="" class="button item_add item_1"> </a>
                             <div class="product_container">
                                 <div class="cart-left">
-                                    <p class="title">Lorem Ipsum 2015</p>
+                                    <p class="title">parachute</p>
                                 </div>
                                 <span class="amount item_price">$45.00</span>
                                 <div class="clearfix"></div>
@@ -137,7 +157,31 @@ require_once 'view/menu.php';
                 </a>
             </div>
             <div class="clearfix"></div>
-        </div>
+            </div>';
+                echo '<div class="content_grid">
+            <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
+                <a href="#">
+                    <div class="inner_content clearfix">
+                        <div class="product_image">
+                            <img src="images/location.png" class="img-responsive" alt=""/>
+                            <a href="" class="button item_add item_1"> </a>
+                            <div class="product_container">
+                                <div class="cart-left">
+                                    <p class="title">location</p>
+                                </div>
+                                <span class="amount item_price">$45.00</span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="clearfix"></div>
+        </div>';
+        }
+        ?>
+
 
     </div>
 

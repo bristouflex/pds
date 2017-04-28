@@ -23,7 +23,7 @@
 	<div class="container">
 		<div class="header-top">
 			<div class="logo">
-				<a href="login.php"><img src="images/aenLogo.png" alt=""/></a>
+				<a href="index.php"><img src="images/aenLogo.png" alt=""/></a>
 			</div>
 			<div class="header_right">
                <!-- <br><a href="logout.php">Deconnexion</a> -->
@@ -39,16 +39,16 @@
 				</ul>
 				<div class="cart_bg">
 					<ul class="cart">
-						<a href="checkout.html">
-							<h4><i class="cart_icon"> </i><p>Cart: <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</p><div class="clearfix"> </div></h4>
+						<a href="panier.php">
+							<h4><i class="cart_icon"> </i><p>Panier: <span class=""><?php echo $_SESSION["panier"]->getTotal()."€"; ?></span> </p><div class="clearfix"> </div></h4>
 						</a>
-						<h5 class="empty"><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></h5>
+						<h5 class="empty"><a  class="simpleCart_empty"><?php echo $_SESSION["panier"]->isEmpty()?"panier vide":"achats non validés" ?></a></h5>
 						<div class="clearfix"> </div>
 					</ul>
 				</div>
 				<ul class="quick_access">
-					<li class="view_cart"><a href="checkout.html">View Cart</a></li>
-					<li class="check"><a href="checkout.html">Checkout</a></li>
+					<li class="view_cart"><a href="panier.php">Voir Panier</a></li>
+					<li class="check"><a href="">Vider Panier</a></li>
 					<div class='clearfix'></div>
 				</ul>
 				<div class="search">

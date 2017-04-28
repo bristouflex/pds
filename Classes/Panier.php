@@ -97,6 +97,36 @@ class Panier {
 		   && !$this->getLocationUlm()
 		;
 	}
+	
+	public function getTotal(){
+	    $price = 0;
+	    
+        if ($this->getAtterissage()) {
+            $price += $this->getAtterissage()->getPrix();
+        }
+        if ($this->getStationnement()) {
+            $price += $this->getStationnement()->getPrix();
+        }
+        if ($this->getNettoyage()) {
+            $price += $this->getNettoyage()->getPrix();
+        }
+        if ($this->getAvitaillement()) {
+            $price += $this->getAvitaillement()->getPrix();
+        }
+        if ($this->getParachute()) {
+            $price += $this->getParachute()->getPrix();
+        }
+        if ($this->getLocationUlm()) {
+            $price += $this->getLocationUlm()->getPrix();
+        }
+        if ($this->getBapteme()) {
+            $price += $this->getBapteme()->getPrix();
+        }
+        if ($this->getLecon()) {
+            $price += $this->getLecon()->getPrix();
+        }
+        return $price;
+    }
 
 
 }
