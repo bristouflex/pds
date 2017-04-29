@@ -10,7 +10,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title>AEN</title>
-		<meta name="Description" content="Bienvenue sur le site de l'AEN">		
+		<meta name="Description" content="Bienvenue sur le site de l'AEN">
+    </head>
 <?php 
 require 'header.php';
     welcome();

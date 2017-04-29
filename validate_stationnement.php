@@ -33,7 +33,6 @@ if ($_POST["categorie"] >= 1 && $_POST["categorie"] <= 3) {
     echo "jour " . $nb_jours;
     $prix += $verif[0] * $nb_jours; // prix categorie journalier
 }
-$_SESSION["panier"][1] = array();
 if (verifDateService(strtotime($_POST["debut"])) == FALSE) {
     echo '<b> vous devez reserver avant 24h!</b><br>';
     $error = 1;
@@ -52,8 +51,8 @@ if(alreadyLanded($_POST["debut"]) != 1){
 }
 if ($error != 1) {
       $_SESSION["panier"]->setStationnement(new Stationnement($_POST["abris"], $_POST["categorie"], $_POST["debut"], $_POST["fin"], $prix));
-  //  $_SESSION["panier"][1] = [ $_POST["abris"], $_POST["categorie"], $_POST["debut"], $_POST["fin"], $prix];
+
 }else {
-    unset($_SESSION["panier"][1]);
+    $_SESSION["panier"]->setStationnement("null");
 }
 ?>

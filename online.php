@@ -83,7 +83,7 @@ require_once 'view/menu.php';
             </div>';
             echo '<div class="content_grid">
             <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
-                <a href="#">
+                <a href="single.php">
                     <div class="inner_content clearfix">
                         <div class="product_image">
                             <img src="images/stationnement.jpg" class="img-responsive" alt=""/>
@@ -103,7 +103,7 @@ require_once 'view/menu.php';
             <div class="clearfix"></div>
         </div>';
         }
-            if ( $_SESSION["user"]->getIsMember() != 0 ) {
+        if ( $_SESSION["user"]->getIsMember() != 0 ) {
                 echo '<div class="content_grid">
             <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
                 <a href="#">
