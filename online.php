@@ -29,7 +29,7 @@ require_once 'view/menu.php';
         if ( $_SESSION["user"]->getIsMember() == 0 ) {
             echo '<div class="content_grid">
             <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
-                <a href="#">
+                <a href="reservationAtterrissage.php">
                     <div class="inner_content clearfix">
                         <div class="product_image">
                             <img src="images/atterrissage.jpg" class="img-responsive" alt=""/>
@@ -46,7 +46,7 @@ require_once 'view/menu.php';
                 </a>
             </div>
             <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
-                <a href="#">
+                <a href="reservationAvitaillement.php">
                     <div class="inner_content clearfix">
                         <div class="product_image">
                             <img src="images/avitaillement.jpg" class="img-responsive" alt=""/>
@@ -63,7 +63,7 @@ require_once 'view/menu.php';
                 </a>
             </div>
             <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem last_1">
-                <a href="#">
+                <a href="reservationNettoyage.php">
                     <div class="inner_content clearfix">
                         <div class="product_image">
                             <img src="images/nettoyage.png" class="img-responsive" alt=""/>
@@ -83,7 +83,7 @@ require_once 'view/menu.php';
             </div>';
             echo '<div class="content_grid">
             <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
-                <a href="single.php">
+                <a href="reservationStationnement.php">
                     <div class="inner_content clearfix">
                         <div class="product_image">
                             <img src="images/stationnement.jpg" class="img-responsive" alt=""/>
@@ -106,7 +106,7 @@ require_once 'view/menu.php';
         if ( $_SESSION["user"]->getIsMember() != 0 ) {
                 echo '<div class="content_grid">
             <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
-                <a href="#">
+                <a href="reservationLecon.php">
                     <div class="inner_content clearfix">
                         <div class="product_image">
                             <img src="images/cours.png" class="img-responsive" alt=""/>
@@ -123,7 +123,7 @@ require_once 'view/menu.php';
                 </a>
             </div>
             <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
-                <a href="#">
+                <a href="reservationBapteme.php">
                     <div class="inner_content clearfix">
                         <div class="product_image">
                             <img src="images/bapteme.png" class="img-responsive" alt=""/>
@@ -140,7 +140,7 @@ require_once 'view/menu.php';
                 </a>
             </div>
             <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem last_1">
-                <a href="#">
+                <a href="reservationParachute.php">
                     <div class="inner_content clearfix">
                         <div class="product_image">
                             <img src="images/parachute.jpg" class="img-responsive" alt=""/>
@@ -160,7 +160,7 @@ require_once 'view/menu.php';
             </div>';
                 echo '<div class="content_grid">
             <div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
-                <a href="#">
+                <a href="reservationLocationUlm.php">
                     <div class="inner_content clearfix">
                         <div class="product_image">
                             <img src="images/location.png" class="img-responsive" alt=""/>

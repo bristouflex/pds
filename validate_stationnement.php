@@ -30,7 +30,6 @@ if ($_POST["categorie"] >= 1 && $_POST["categorie"] <= 3) {
         $error = 1;
     }
     $nb_jours = (int) $nb_jours;
-    echo "jour " . $nb_jours;
     $prix += $verif[0] * $nb_jours; // prix categorie journalier
 }
 if (verifDateService(strtotime($_POST["debut"])) == FALSE) {
@@ -53,6 +52,6 @@ if ($error != 1) {
       $_SESSION["panier"]->setStationnement(new Stationnement($_POST["abris"], $_POST["categorie"], $_POST["debut"], $_POST["fin"], $prix));
 
 }else {
-    $_SESSION["panier"]->setStationnement("null");
+    $_SESSION["panier"]->setStationnement(null);
 }
 ?>

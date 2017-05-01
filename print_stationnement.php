@@ -1,4 +1,4 @@
-<?php 
+<?php
 require 'init.php';
 $bdd = connectBdd();
 
@@ -25,8 +25,6 @@ else{
     echo "<input type='radio' name='abris' value='exterieur' required>Exterieur<br>";
     echo $exterieur;
     echo "<input type='number' name='S' value='0' min='0' max='4000'> m²<br><br>";
-    echo "<input type='datetime-local' name='debut_stationnement' required>";
-    echo "<input type='datetime-local' name='fin' required>";
 }
 
 
@@ -38,11 +36,13 @@ if(empty($resultat)){
 }
 
 else{
-    echo "Categorie<br><br>";
+    echo "<br>Categorie:<br>";
     foreach($resultat as list($id,$nom,$type,$ht,$ttc)){
         echo "<input type='radio' name='cat' value=\"".$id."\" required> Nom : ".$nom."Categorie".$type."Prix HT".$ht."Prix TTC".$ttc."<br><br>";
     }
 }
+echo "<input type='datetime-local' name='debut_stationnement' required>";
+echo "<input type='datetime-local' name='fin' required>";
 echo "<input type='button' value='Valider Stationnement' onclick='checker_stationnement()'";
 echo "</form>";
 

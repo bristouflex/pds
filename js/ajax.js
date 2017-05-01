@@ -799,3 +799,57 @@ function back_Parachute() {
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
+
+function cotisation() {
+    var request = ajaxOk();
+    var div = document.getElementById("options_cotisation");
+    request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == 200) {
+            div.innerHTML = " ";
+            div.innerHTML = request.responseText;
+        }
+    }
+    request.open("POST", "print_cotisation.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send();
+}
+
+function t10() {
+    var i = document.getElementById("options_cotisation");
+    if (i.innerHTML == " " || i.innerHTML == "") {
+        cotisation();
+    } else {
+        i.innerHTML = " ";
+    }
+}
+
+function checker_cotisation() {
+
+    var request = ajaxOk();
+    var data = document.getElementsByName("cotisation");
+    for (var i = 0; i < data.length; i++) {
+        if (data[i].checked === true) {
+            var cotisation = data[i].value;
+        }
+    }
+
+    var data2 = document.getElementsByName("license");
+    for (var i = 0; i < data2.length; i++) {
+        //console.log(data2[0].value);
+        if (data2[i].checked === true) {
+            var license = data2[i].value;
+        }
+    }
+
+    div = document.getElementById("options_cotisation");
+    request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == 200) {
+            div.innerHTML = " ";
+            div.innerHTML = request.responseText;
+        }
+    }
+
+    request.open("POST", "validate_cotisation.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("cotisation=" + cotisation + "&license=" + license);
+}

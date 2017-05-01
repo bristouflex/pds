@@ -314,8 +314,8 @@ function isConnected() {
 
 //cette fonction vérifie si un stationnement a été demandé à la date donnée en paramètre afin de vérifier si un service peux être demandé à cette date
 function canReserve($debut) {
-    if(isset($_SESSION["panier"][1])){
-        if($debut > $_SESSION["panier"][1][2] && $debut < $_SESSION["panier"][1][3]){ //faire avec le $session panier!!!!!!
+    if($_SESSION["panier"]->getAtterissage()){
+        if($debut > $_SESSION["panier"]->getAtterissage()->getDebut() && $debut < $_SESSION["panier"]->getAtterissage()->getFin()){
             return 1;
         }
     }
@@ -502,6 +502,33 @@ function instructorAvailable($idInstructor ,$date){
     }
     return 1;
 }
+
+function checkCotisation(){
+    $bdd = connectBdd();
+    $query = $bdd -> prepare("SELECT * FROM options_cotisation WHERE inscrit = :id");
+    $query->execute([ "id" => $_SESSION["user"]->getId()]);
+    $resultat = $query->fetch();
+    if (empty($resultat)){
+        return false;
+    }
+    else{
+        $temp = $resultat[5];
+        $query = $bdd->prepare("SELECT * FROM facture WHERE id=:idfacture AND idUser = :idUser AND isPaid = :isPaid");
+        $query->execute([
+            "idfacture" => $temp,
+            "idUser" => $_SESSION["user"]->getId(),
+            "isPaid" => 1
+        ]);
+        $resultat2 = $query->fetch();
+        if (empty($resultat2)){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+}
+
 
 
 ?>

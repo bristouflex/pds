@@ -7,6 +7,7 @@ require_once 'nettoyage.php';
 require_once 'lecon.php';
 require_once 'parachute.php';
 require_once 'stationnement.php';
+require_once 'Cotisation.php';
 
 class Panier {
 	private $atterissage_ = null;
@@ -17,6 +18,18 @@ class Panier {
 	private $nettoyage_ = null;
 	private $parachute_ = null;
 	private $stationnement_ = null;
+	private $cotisation = null;
+
+
+    public function getCotisation()
+    {
+        return $this->cotisation;
+    }
+
+    public function setCotisation($cotisation)
+    {
+        $this->cotisation = $cotisation;
+    }
 
 	public function getAtterissage() {
 		return $this->atterissage_;
@@ -95,6 +108,7 @@ class Panier {
 		   && !$this->getParachute()
 		   && !$this->getLecon()
 		   && !$this->getLocationUlm()
+            && !$this->getCotisation()
 		;
 	}
 	
@@ -124,6 +138,9 @@ class Panier {
         }
         if ($this->getLecon()) {
             $price += $this->getLecon()->getPrix();
+        }
+        if ($this->getCotisation()) {
+            $price += $this->getCotisation()->getPrix();
         }
         return $price;
     }
