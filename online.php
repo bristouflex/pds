@@ -12,7 +12,7 @@ if (isConnected()) {
     unset($_SESSION["error_subscribe"]);
 } else {
     unset($_SESSION["User"]);
-    header("Location: login.php");
+    header("Location: index.php");
 }
 
 require_once 'view/header.php';
