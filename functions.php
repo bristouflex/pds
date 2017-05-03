@@ -348,7 +348,7 @@ function availableVehicule($vehicule, $date){
             $req1 = $bdd->prepare('SELECT COUNT(*) as nb FROM vehicule WHERE type = \'avion ecole\'');
             $req1->execute();
             $nbPlanesSchool = $req1->fetch();
-            $req2 = $bdd->prepare("SELECT COUNT(*) as nb FROM options_lecon WHERE date > :avant AND date < :apres");
+            $req2 = $bdd->prepare("SELECT COUNT(*) as nb FROM options_lecon WHERE date > :avant AND date < :apres AND annule = 0");
             $req2->execute([
                 "avant" => $before60,
                 "apres" => $after60
@@ -480,7 +480,7 @@ function instructorAvailable($idInstructor ,$date){
     $bdd = connectBdd();
     $before = date("Y-m-d H:i:s", strtotime($date)-60*59);
     $after = date("Y-m-d H:i:s", strtotime($date)+60*59);
-    $query = $bdd -> prepare("SELECT * FROM options_lecon WHERE instructeur = :id AND date > :before AND date < :after");
+    $query = $bdd -> prepare("SELECT * FROM options_lecon WHERE instructeur = :id AND date > :before AND date < :after AND annule = 0");
     $query->execute([
         "id" => $idInstructor,
         "before" => $before,

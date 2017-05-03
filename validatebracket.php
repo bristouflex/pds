@@ -137,11 +137,11 @@ if ($_SESSION['panier']->getLocationUlm()) { // location_ulm
 
 if($_SESSION["panier"]->getCotisation){ // license cotisation
     $query = $bdd->prepare("INSERT INTO options_cotisation (cotisation,license,debut,inscrit,facture)
-   VALUES (:cotisation,:license,:date,:inscrit,:facture)");
+   VALUES (:cotisation,:license,:debut,:inscrit,:facture)");
     $query->execute( [
         "cotisation" => $_SESSION["panier"]->getCotisation()->getCotisation(),
         "license" => $_SESSION["panier"]->getCotisation()->getLicense(),
-        "date" => $_SESSION["panier"]->getCotisation()->getDebut(),
+        "debut" => $_SESSION["panier"]->getCotisation()->getDebut(),
         "inscrit" =>$_SESSION["user"]->getId(),
         "facture" => $factureID
     ]);

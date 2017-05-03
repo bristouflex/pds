@@ -23,11 +23,12 @@ welcomeadmin();
 	</head>
 	<body><br>
 		<br><a href="contactuser.php">Contacter Utilisateur</a>
-		<br><a href="myinfoadmin.php">Modifier mes informations OK</a>
-		<br><a href="king.php">Modifier un utilisateur OK</a>
+		<br><a href="myinfoadmin.php">Modifier mes informations</a>
+		<br><a href="king.php">Modifier un utilisateur</a>
 		<br><a href="checkFactures.php">Voir les factures</a>
 		<br><a href="modifyService.php">Modifier un service</a>
 		<br><a href="modifyActivity.php">Modifier une activite</a>
+        <br><a href="modifyLessons.php">voir leçons</a>
 		<br><a href="logout.php">Deconnexion</a>
 	</body>
 </html>
