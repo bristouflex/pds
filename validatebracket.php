@@ -135,7 +135,7 @@ if ($_SESSION['panier']->getLocationUlm()) { // location_ulm
 }
 
 
-if($_SESSION["panier"]->getCotisation){ // license cotisation
+if($_SESSION["panier"]->getCotisation()){ // license cotisation
     $query = $bdd->prepare("INSERT INTO options_cotisation (cotisation,license,debut,inscrit,facture)
    VALUES (:cotisation,:license,:debut,:inscrit,:facture)");
     $query->execute( [

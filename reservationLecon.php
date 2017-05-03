@@ -40,27 +40,31 @@ require_once 'view/menu.php';
             </div>
             <div class="cont1 span_2_of_a1 simpleCart_shelfItem">
                 <h1>Leçon</h1>
-
                 <div class="price_single">
                     <span class="amount item_price actual">120.00€</span>
                 </div>
                 <h2 class="quick">Description</h2>
-                <p> Prenez une leçon avec un de nos deux professeurs.</p>
-
+                <p> Prenez une leçon avec un de nos deux professeurs:</p>
+                <p align="center">Vald et Alk-pote</p>
+                <div class="row">
+                    <img src="images/vald2.jpg" width="250px" class="img-responsive img-thumbnail">
+                    <img src="images/alk-pote.jpg" width="250px" class="img-responsive img-thumbnail">
+                </div>
+                <p align="center">Vald et Alk-pote</p>
                 <div class="btn_form button item_add item_1">
                     <form>
                         <?php
                         if(checkCotisation() || $_SESSION["user"]->getIsMember() == 0) {
-                            echo "<button type=\"button\" class=\"btn btn-secondary btn-lg btn-block\" onclick=\"t6()\">réserver mon stationnement </button>";
+                            echo "<p align='center'><button type=\"button\" class=\"btn btn-secondary btn-lg btn-block\" onclick=\"t9()\">réserver ma leçon </button></p> ";
                         }else{
                             echo "Vous devez d'abord payer une Cotisation ainsi qu'une license et une assurance avant d'acceder à cet espace membre<br><br>";
-                            echo '<button type="button" onclick="t10()">Cotisation et licenses</button>';
+                            echo '<p align=\'center\'><button type="button" onclick="t10()">Cotisation et licenses</button></p> ';
                             echo '<div id="options_cotisation"></div>';
                         }
                         ?>
                     </form>
                 </div>
-                <div id="options_stationnement"></div>
+                <div id="options_lecon"></div>
             </div>
             <div class="clearfix"></div>
         </div>

@@ -2,16 +2,11 @@
 require "init.php";
 
 
-if (isset($_SESSION['email'])) {
-	
-unset($_SESSION["error_subscribe"]);
-
-welcomeadmin();
-	
-}else{
-	unset($_SESSION["email"]);
-	header("Location: loginadmin.php");
+if(!backisConnected()){
+    session_destroy();
+    header("location: ../index.php");
 }
+welcomeadmin();
 
 ?>
 <script src="js/ajax.js"></script>

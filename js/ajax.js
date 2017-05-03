@@ -853,3 +853,18 @@ function checker_cotisation() {
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("cotisation=" + cotisation + "&license=" + license);
 }
+
+function cancelLesson(id,user,facture) {
+    var request = ajaxOk();
+    div = document.getElementById('tableau');
+    request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == 200) {
+            div.innerHTML = " ";
+            div.innerHTML = request.responseText;
+        }
+    }
+    console.log(id);
+    request.open("POST", "print_ajax/cancelLesson.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("id="+id+"&user="+user+"$facture="+facture);
+}

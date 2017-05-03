@@ -529,6 +529,40 @@ function checkCotisation(){
     }
 }
 
+function backisConnected() {
+    if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
+        return false;
+    }
+    $bdd = connectBdd();
+    $query = $bdd->prepare("SELECT id FROM administrateur WHERE email=:mail");
+    $query->execute([
+        "mail" => $_SESSION["email"]
+    ]);
+    $resultat = $query->fetch();
 
+    if (empty($resultat)) {
+        return false;
+    }
+    return true;
+}
+
+function giveMoneyBack($idUser, $idfacture){
+    $bdd = connectBdd();
+    $query = $bdd->prepare("SELECT ispaid FROM facture WHERE id = :id");
+    $query->execute([
+        "id" => $idfacture
+    ]);
+    $isPaid = $query->fetch();
+    if ($isPaid["ispaid"] == 1) { //on rembourse qu'en cas de paiement
+        $query = $bdd->prepare("SELECT prix FROM lecon");
+        $query->execute([]);
+        $prix = $query->fetch();
+        $query = $bdd->prepare("UPDATE inscrit SET credit = credit + :prix WHERE id = :id");
+        $query->execute([
+            "prix" => $prix[0],
+            "id" => $idUser
+        ]);
+    }
+}
 
 ?>

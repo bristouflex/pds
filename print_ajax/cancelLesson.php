@@ -1,22 +1,27 @@
 <?php
-require "init.php";
-
 /**
  * Created by PhpStorm.
  * User: Bristouflex
  * Date: 03/05/2017
- * Time: 12:32
+ * Time: 20:18
  */
+require_once 'initprintback.php';
 if(!backisConnected()){
     session_destroy();
     header("location: ../index.php");
 }
+if (isset($_POST["id"]) && isset($_POST["user"]) && isset($_POST["facture"])){
+    $bdd = connectBdd();
+    $query = $bdd->prepare("UPDATE options_lecon SET annule = 1 WHERE id = :id");
+    $query->execute([
+        "id" => $_POST["id"]
+    ]);
+    giveMoneyBack($_POST["user"], $_POST["facture"]);
+}
 
-$bdd = connectBdd();
-
-$query = $bdd->prepare("SELECT * FROM options_lecon WHERE annule = 0 ORDER BY DATE DESC"); // on cherche toutes les lecons non annulées
+$query = $bdd->prepare("SELECT * FROM options_lecon WHERE annule = 0"); // on cherche toutes les lecons non annulées
 $query->execute();
-echo '<div id="tableau"><table> 
+echo '<table> 
 <tr>
     <th>utilisateur</th>
     <th>date</th>
@@ -49,5 +54,5 @@ while($result = $query->fetch()){ //pour chaque resultat de la requête
         <td><button type="button" onclick="cancelLesson('.$result["id"],$userId[0],$result["facture"].')">annuler</button></td>  
 </tr>'; //on a besoin de l'id de la lecon, de celui de l'utilisateur et de celui de la facture pour annuler et rembourser
 }
-echo "<script src='js/ajax.js'></script>";
-echo '</table></div>';
+
+echo '</table>';
