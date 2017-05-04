@@ -1,9 +1,9 @@
 <?php
 require 'init.php';
 $bdd=connectBdd();
-
-
-echo "<table border=1 CELLPADDING=5>";
+echo "<link href=\"css/bootstrap.min.css\" rel='stylesheet' type='text/css'/>";
+echo '<div class="table-responsive table-bordered table-inverse">';
+echo '<table class="table ">';
 $i = 1;
 
 
@@ -22,4 +22,4 @@ while ($data = $query->fetch()) {
     echo "</tr>";
     $i++;
 }
-echo "</table>";
+echo "</table></div>";

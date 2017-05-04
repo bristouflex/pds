@@ -2,7 +2,7 @@
 
 require 'init.php';
 $bdd=connectBdd();
-
+echo "<link href=\"css/bootstrap.min.css\" rel='stylesheet' type='text/css'/>";
 $query=$bdd->query("SELECT * FROM lecon");
 $resultat = $query -> fetchall();
 
@@ -14,18 +14,18 @@ if(empty($resultat) || empty($variable)){
 }
 
 else{
-    echo "<form>";
+    echo "<div class='form-group' align='center'><form>";
     foreach($resultat as list($id, $prix)){
-        echo "<input type='radio' name='lecon'   value=\"".$id."\" 
-        required>Lecon : Prix TTC : ".$prix."<br>";
+        echo "<div class='radio'><input type='radio' name='lecon'   value=\"".$id."\" 
+        required>Lecon : Prix TTC : ".$prix."</div>";
     }
     foreach ($variable as list($id, $name, $prenom)) {
-    	echo "<input type='radio' name='instructeur' value=\"".$id."\" 
-        required>Instructeur :".$prenom." ".$name."<br>";
+    	echo "<div class='radio'><input type='radio' name='instructeur' value=\"".$id."\" 
+        required>Instructeur :".$prenom." ".$name."</div>";
     }
 }
-echo "<input type='datetime-local' name='debut_lecon' required>";
-echo "<input type='button' value='Valider Lecon' onclick='checker_lecon()'";
-echo '</form>';
+echo "<input type='datetime-local' name='debut_lecon' required><br>";
+echo "<input type='button' class='btn' value='Valider Lecon' onclick='checker_lecon()'>";
+echo '</form></div> ';
 
 ?>

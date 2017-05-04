@@ -45,13 +45,13 @@ require_once 'view/menu.php';
                     <span class="amount item_price actual">120.00€</span>
                 </div>
                 <h2 class="quick">Description</h2>
-                <p> Voyager à bord d'un de nos ulm pour visiter la région!.</p>
+                <p> Voyager à bord d'un de nos ulm pour visiter la région!.</p><br><br><br>
 
                 <div class="btn_form button item_add item_1">
                     <form>
                         <?php
                         if(checkCotisation() || $_SESSION["user"]->getIsMember() == 0) {
-                            echo "<button type=\"button\" class=\"btn btn-secondary btn-lg btn-block\" onclick=\"t8()\">louer un ulm </button>";
+                            echo "<p align='center'><button type=\"button\" class=\"btn btn-secondary btn-lg btn-block\" onclick=\"t8()\">louer un ulm </button></p> ";
                         }else{
                             echo "Vous devez d'abord payer une Cotisation ainsi qu'une license et une assurance avant d'acceder à cet espace membre<br><br>";
                             echo '<button type="button" onclick="t10()">Cotisation et licenses</button>';
@@ -60,7 +60,7 @@ require_once 'view/menu.php';
                         ?>
                     </form>
                 </div>
-                <div id="options_location"></div>
+                <div id="options_location_ulm"></div>
             </div>
             <div class="clearfix"></div>
         </div>

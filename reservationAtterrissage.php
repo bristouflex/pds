@@ -45,13 +45,13 @@ require_once 'view/menu.php';
                     <span class="amount item_price actual">120.00€</span>
                 </div>
                 <h2 class="quick">Description</h2>
-                <p> Atterissez à une date donnée dans notre aerodrome.</p>
+                <p> Atterissez à une date donnée dans notre aerodrome.</p><br><br><br>
 
                 <div class="btn_form button item_add item_1">
                     <form>
                         <?php
                         if(checkCotisation() || $_SESSION["user"]->getIsMember() == 0) {
-                            echo "<button type=\"button\" class=\"btn btn-secondary btn-lg btn-block\" onclick=\"t2()\">réserver mon atterrissage </button>";
+                            echo "<p align='center'><button type=\"button\" class=\"btn btn-secondary btn-lg btn-block\" onclick=\"t2()\">réserver mon atterrissage </button></p> ";
                         }else{
                             echo "Vous devez d'abord payer une Cotisation ainsi qu'une license et une assurance avant d'acceder à cet espace membre<br><br>";
                             echo '<button type="button" onclick="t10()">Cotisation et licenses</button>';
