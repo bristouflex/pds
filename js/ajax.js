@@ -45,7 +45,7 @@ function stationnement() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_stationnement.php");
+    request.open("POST", "print_ajax/print_stationnement.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -60,7 +60,7 @@ function atterissage() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_atterissage.php");
+    request.open("POST", "print_ajax/print_atterissage.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -88,7 +88,7 @@ function avitaillement() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_avitaillement.php");
+    request.open("POST", "print_ajax/print_avitaillement.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -118,14 +118,13 @@ function checker_stationnement() {
         if (request.readyState == 4 && request.status == 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
-
+            updateBracket();
         }
     }
 
-    request.open("POST", "validate_stationnement.php");
+    request.open("POST", "ajax_validate/validate_stationnement.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("abris=" + abris + "&surface=" + surface + "&debut=" + debut + "&fin=" + fin + "&categorie=" + categorie);
-    updateBracket();
 }
 
 
@@ -147,13 +146,12 @@ function checker_avitaillement() {
         if (request.readyState == 4 && request.status == 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
+            updateBracket();
         }
     }
-    request.open("POST", "validate_avitaillement.php");
+    request.open("POST", "ajax_validate/validate_avitaillement.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("essence=" + essence + "&debut=" + debut);
-    updateBracket();
-
 }
 
 
@@ -175,15 +173,13 @@ function checker_nettoyage() {
         if (request.readyState == 4 && request.status == 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
-
+            updateBracket();
         }
     }
 
-    request.open("POST", "validate_nettoyage.php");
+    request.open("POST", "ajax_validate/validate_nettoyage.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("produit=" + produit + "&debut=" + debut);
-    updateBracket();
-
 }
 
 
@@ -210,13 +206,12 @@ function checker_atterissage() {
         if (request.readyState == 4 && request.status == 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
-
+            updateBracket();
         }
     }
-    request.open("POST", "validate_atterissage.php");
+    request.open("POST", "ajax_validate/validate_atterissage.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("avion=" + avion + "&categorie=" + categorie + "&debut=" + debut);
-    updateBracket();
 }
 
 function t1() {
@@ -323,7 +318,7 @@ function parachute() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_parachute.php");
+    request.open("POST", "print_ajax/print_parachute.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -337,7 +332,7 @@ function bapteme() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_bapteme.php");
+    request.open("POST", "print_ajax/print_bapteme.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -365,7 +360,7 @@ function lecon() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_lecon.php");
+    request.open("POST", "print_ajax/print_lecon.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -386,14 +381,13 @@ function checker_parachute() {
         if (request.readyState == 4 && request.status == 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
-
+            updateBracket();
         }
     }
 
-    request.open("POST", "validate_parachute.php");
+    request.open("POST", "ajax_validate/validate_parachute.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("parachute=" + parachute + "&debut=" + debut);
-    updateBracket();
 }
 
 function checker_bapteme() {
@@ -420,14 +414,13 @@ function checker_bapteme() {
         if (request.readyState == 4 && request.status == 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
-
+            updateBracket();
         }
     }
 
-    request.open("POST", "validate_bapteme.php");
+    request.open("POST", "ajax_validate/validate_bapteme.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("bapteme=" + bapteme + "&instructeur=" + instructeur + "&debut=" + debut);
-    updateBracket();
 }
 
 function checker_lecon() {
@@ -453,14 +446,13 @@ function checker_lecon() {
         if (request.readyState == 4 && request.status == 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
-
+            updateBracket();
         }
     }
 
-    request.open("POST", "validate_lecon.php");
+    request.open("POST", "ajax_validate/validate_lecon.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("lecon=" + lecon + "&instructeur=" + instructeur + "&debut=" + debut);
-    updateBracket();
 }
 
 function checker_location_ulm() {
@@ -479,13 +471,13 @@ function checker_location_ulm() {
         if (request.readyState == 4 && request.status == 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
+            updateBracket();
         }
     }
 
-    request.open("POST", "validate_location_ulm.php");
+    request.open("POST", "ajax_validate/validate_location_ulm.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("location_ulm=" + location_ulm + "&debut=" + debut);
-    updateBracket();
 }
 
 function t_all(){
@@ -524,7 +516,7 @@ function allbill() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_allbill.php");
+    request.open("POST", "print_ajax/print_allbill.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -538,7 +530,7 @@ function paidbills() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_paidbill.php");
+    request.open("POST", "print_ajax/print_paidbill.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -552,7 +544,7 @@ function unpaidbills() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_unpaidbill.php");
+    request.open("POST", "print_ajax/print_unpaidbill.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -620,7 +612,7 @@ function back_abris() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_back_abris.php");
+    request.open("POST", "print_ajax/print_back_abris.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -634,7 +626,7 @@ function back_avion() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_back_avion.php");
+    request.open("POST", "print_ajax/print_back_avion.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -648,7 +640,7 @@ function back_categorie() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_back_categorie.php");
+    request.open("POST", "print_ajax/print_back_categorie.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -662,7 +654,7 @@ function back_grpacoustique() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_back_grpacoustique.php");
+    request.open("POST", "print_ajax/print_back_grpacoustique.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -676,7 +668,7 @@ function back_produit() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_back_produit.php");
+    request.open("POST", "print_ajax/print_back_produit.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -690,7 +682,7 @@ function back_redevances() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_back_redevances.php");
+    request.open("POST", "print_ajax/print_back_redevances.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -749,7 +741,7 @@ function back_Bapteme() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_back_Bapteme.php");
+    request.open("POST", "print_ajax/print_back_Bapteme.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -763,7 +755,7 @@ function back_Cotisation() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_back_Cotisation.php");
+    request.open("POST", "print_ajax/print_back_Cotisation.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -777,7 +769,7 @@ function back_Lecon() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_back_Lecon.php");
+    request.open("POST", "print_ajax/print_back_Lecon.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -791,7 +783,7 @@ function back_LocationULM() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_back_LocationULM.php");
+    request.open("POST", "print_ajax/print_back_LocationULM.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -805,7 +797,7 @@ function back_Parachute() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_back_Parachute.php");
+    request.open("POST", "print_ajax/print_back_Parachute.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -819,7 +811,7 @@ function cotisation() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_cotisation.php");
+    request.open("POST", "print_ajax/print_cotisation.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -856,13 +848,13 @@ function checker_cotisation() {
         if (request.readyState == 4 && request.status == 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
+            updateBracket();
         }
     }
 
-    request.open("POST", "validate_cotisation.php");
+    request.open("POST", "ajax_validate/validate_cotisation.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("cotisation=" + cotisation + "&license=" + license);
-    updateBracket();
 }
 
 function cancelLesson(id,user,facture) {

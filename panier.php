@@ -20,6 +20,7 @@ require_once 'view/menu.php';
 
 
 echo "<div class=\"col-md-9\">";
+echo "<h2 align='center'>Liste des éléments du panier:</h2>";
 if ($_SESSION["panier"]->getCotisation()) {
     echo "Cotisation: ";
     echo "<ul class='list-group>' <li class='list-group-item'>". "License:    ";
@@ -65,7 +66,7 @@ if ($_SESSION['panier']->getLecon()) {
 }
 
 if ($_SESSION['panier']->getParachute()) {
-    echo "<h2 align='center'>parachute:</h2> <ul class='list-group>'";
+    echo "parachute<ul class='list-group>'";
     echo "</li><li class='list-group-item'>". "Date:    ";
     echo $_SESSION['panier']->getParachute()->getDebut();
     echo "<li class='list-group-item'>"."Parachute:    ";
@@ -162,7 +163,7 @@ if ($_SESSION['panier']->getAtterissage()) {
 if ($_SESSION['panier']->isEmpty()) {
     echo "<h1 align='center'><b>Votre panier est vide</b></h1>";
 } else {
-    echo "<button class='btn-lg btn-secondary btn-block'><a href='validatebracket.php'>Valider mon panier</a></button></p>";
+    echo "<button class='btn-lg btn-secondary btn-block'><a href='ajax_validate/validatebracket.php'>Valider mon panier</a></button></p>";
 }
 
 require_once 'view/footer.php';
