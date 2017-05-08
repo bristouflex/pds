@@ -4,6 +4,7 @@ require_once 'Classes/User.php';
 require_once 'Classes/Panier.php';
 
 function connectBdd() {
+
     try {
         $bdd = new PDO('mysql:dbname=' . NAMEBDD . ';host=' . HOSTBDD, USERBDD, MDPBDD);
     } catch (Exception $e) {
@@ -490,13 +491,13 @@ function instructorAvailable($idInstructor ,$date){
     if (!empty($resultat)){
         return 0;
     }
-    $query = $bdd -> prepare("SELECT * FROM options_bapteme WHERE instructeur = :id AND date > :before AND date < :after");
-    $query->execute([
+    $query2 = $bdd -> prepare("SELECT * FROM options_bapteme WHERE instructeur = :id AND date > :before AND date < :after");
+    $query2->execute([
         "id" => $idInstructor,
         "before" => $before,
         "after" => $after
     ]);
-    $resultat = $query->fetch();
+    $resultat = $query2->fetch();
     if (!empty($resultat)){
         return 0;
     }
@@ -548,21 +549,15 @@ function backisConnected() {
 
 function giveMoneyBack($idUser, $idfacture){
     $bdd = connectBdd();
-    $query = $bdd->prepare("SELECT ispaid FROM facture WHERE id = :id");
+    $query = $bdd->prepare("SELECT prix FROM lecon");
+    $query->execute([]);
+    $prix = $query->fetch();
+    $query = $bdd->prepare("UPDATE inscrit SET credit = credit + :prix WHERE id = :id");
     $query->execute([
-        "id" => $idfacture
+        "prix" => $prix[0],
+        "id" => $idUser
     ]);
-    $isPaid = $query->fetch();
-    if ($isPaid["ispaid"] == 1) { //on rembourse qu'en cas de paiement
-        $query = $bdd->prepare("SELECT prix FROM lecon");
-        $query->execute([]);
-        $prix = $query->fetch();
-        $query = $bdd->prepare("UPDATE inscrit SET credit = credit + :prix WHERE id = :id");
-        $query->execute([
-            "prix" => $prix[0],
-            "id" => $idUser
-        ]);
-    }
+
 }
 
 ?>

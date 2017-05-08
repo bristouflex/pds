@@ -9,16 +9,17 @@ require_once 'initprintback.php';
 if(!backisConnected()){
     session_destroy();
     header("location: ../index.php");
+}else {
+    if (!isset($_POST["id"]) || !isset($_POST["user"]) || !isset($_POST["facture"])) {
+        header("location: ../modifyLessons.php");
+    }
 }
-if (isset($_POST["id"]) && isset($_POST["user"]) && isset($_POST["facture"])){
-    $bdd = connectBdd();
-    $query = $bdd->prepare("UPDATE options_lecon SET annule = 1 WHERE id = :id");
-    $query->execute([
-        "id" => $_POST["id"]
-    ]);
-    giveMoneyBack($_POST["user"], $_POST["facture"]);
-}
-
+$bdd = connectBdd();
+$query = $bdd->prepare("UPDATE options_lecon SET annule = 1 WHERE id = :id");
+$query->execute([
+    "id" => $_POST["id"]
+]);
+giveMoneyBack($_POST["user"], $_POST["facture"]);
 $query = $bdd->prepare("SELECT * FROM options_lecon WHERE annule = 0"); // on cherche toutes les lecons non annulées
 $query->execute();
 echo '<table> 

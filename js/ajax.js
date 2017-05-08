@@ -863,7 +863,7 @@ function cancelLesson(id,user,facture) {
             div.innerHTML = request.responseText;
         }
     }
-    console.log(id);
+    console.log(id+" "+user+" "+facture)
     request.open("POST", "print_ajax/cancelLesson.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("id="+id+"&user="+user+"$facture="+facture);

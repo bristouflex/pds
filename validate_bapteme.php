@@ -39,6 +39,6 @@ if ($error != 1) {
     $_SESSION["panier"]-> setBapteme(new Bapteme($bapteme, $instructeur, $prix, $debut));
   //  $_SESSION["panier"][4] = [$bapteme, $instructeur, $prix, $debut];
 }else {
-    unset($_SESSION["panier"][4]);
+    $_SESSION["panier"]->setBapteme(null);
 }
 ?>

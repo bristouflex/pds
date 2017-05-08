@@ -46,7 +46,7 @@ while($result = $query->fetch()){ //pour chaque resultat de la requête
         <td>'.$result["date"].'</td>     
         <td>'.$instructeur["prenom"].' '.$instructeur["nom"].'</td> 
         <td>'.$result["annule"].'</td>
-        <td><button type="button" onclick="cancelLesson('.$result["id"],$userId[0],$result["facture"].')">annuler</button></td>  
+        <td><button type="button" onclick="cancelLesson('.$result["id"].",".$userId[0].",".$result["facture"].')">annuler</button></td>  
 </tr>'; //on a besoin de l'id de la lecon, de celui de l'utilisateur et de celui de la facture pour annuler et rembourser
 }
 echo "<script src='js/ajax.js'></script>";

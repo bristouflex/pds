@@ -26,7 +26,7 @@ if(availableVehicule(1, $_POST["debut"]) != 1){
     $error = 1;
 }
 
-if(instructorAvailable($_POST["instructeur"], $_POST["debut"])){
+if(!instructorAvailable($_POST["instructeur"], $_POST["debut"])){
     echo "<b>l'instructeur que vous avez choisi n'est pas disponible sur ce créneau</b></br>";
     $error = 1;
 }
@@ -35,12 +35,10 @@ $debut = $_POST["debut"];
 $instructeur = $_POST["instructeur"];
 $lecon = $_POST["lecon"];
 
-$_SESSION["panier"][6] = array();
 
 if ($error != 1) {
     $_SESSION["panier"]->setLecon(new Lecon($instructeur, $prix, $debut, $lecon));
-  //  $_SESSION["panier"][6] = [$lecon, $instructeur, $prix, $debut];
 }else {
-    unset($_SESSION["panier"][6]);
+    $_SESSION["panier"]->setLecon(null);
 }
 ?>

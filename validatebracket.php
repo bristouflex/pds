@@ -117,7 +117,7 @@ if ($_SESSION['panier']->getLecon()) { // lecon
         VALUES (:instructeur, :date, :lecon, :facture)");
     $query->execute([
         "instructeur" => $_SESSION["panier"]->getLecon()->getInstructeur(),
-        "date" => $_SESSION["panier"] > getLecon()->getDate(),
+        "date" => $_SESSION["panier"]-> getLecon()->getDate(),
         "lecon" => $_SESSION["panier"]->getLecon()->getLecon(),
         "facture" => $factureID
     ]);

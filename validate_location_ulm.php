@@ -35,6 +35,6 @@ if ($error != 1) {
     $_SESSION["panier"]-> setLocationUlm( new LocationUlm($location, $prix, $debut));
   //  $_SESSION["panier"][7] = [$location, $prix, $debut];
 }else {
-    unset($_SESSION["panier"][7]);
+    $_SESSION["panier"]->setLocationUlm(null);
 }
 ?>
