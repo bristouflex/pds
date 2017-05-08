@@ -50,7 +50,6 @@ require_once 'view/menu.php';
                     <img src="images/vald2.jpg" width="250px" class="img-responsive img-thumbnail">
                     <img src="images/alk-pote.jpg" width="250px" class="img-responsive img-thumbnail">
                 </div>
-                <p align="center">Vald et Alk-pote</p>
                 <div class="btn_form button item_add item_1">
                     <form>
                         <?php

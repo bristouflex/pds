@@ -118,12 +118,14 @@ function checker_stationnement() {
         if (request.readyState == 4 && request.status == 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
+
         }
     }
 
     request.open("POST", "validate_stationnement.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("abris=" + abris + "&surface=" + surface + "&debut=" + debut + "&fin=" + fin + "&categorie=" + categorie);
+    updateBracket();
 }
 
 
@@ -150,6 +152,7 @@ function checker_avitaillement() {
     request.open("POST", "validate_avitaillement.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("essence=" + essence + "&debut=" + debut);
+    updateBracket();
 
 }
 
@@ -172,12 +175,14 @@ function checker_nettoyage() {
         if (request.readyState == 4 && request.status == 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
+
         }
     }
 
     request.open("POST", "validate_nettoyage.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("produit=" + produit + "&debut=" + debut);
+    updateBracket();
 
 }
 
@@ -205,11 +210,13 @@ function checker_atterissage() {
         if (request.readyState == 4 && request.status == 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
+
         }
     }
     request.open("POST", "validate_atterissage.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("avion=" + avion + "&categorie=" + categorie + "&debut=" + debut);
+    updateBracket();
 }
 
 function t1() {
@@ -379,13 +386,14 @@ function checker_parachute() {
         if (request.readyState == 4 && request.status == 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
+
         }
     }
 
     request.open("POST", "validate_parachute.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("parachute=" + parachute + "&debut=" + debut);
-
+    updateBracket();
 }
 
 function checker_bapteme() {
@@ -412,13 +420,14 @@ function checker_bapteme() {
         if (request.readyState == 4 && request.status == 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
+
         }
     }
 
     request.open("POST", "validate_bapteme.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("bapteme=" + bapteme + "&instructeur=" + instructeur + "&debut=" + debut);
-
+    updateBracket();
 }
 
 function checker_lecon() {
@@ -444,13 +453,14 @@ function checker_lecon() {
         if (request.readyState == 4 && request.status == 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
+
         }
     }
 
     request.open("POST", "validate_lecon.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("lecon=" + lecon + "&instructeur=" + instructeur + "&debut=" + debut);
-
+    updateBracket();
 }
 
 function checker_location_ulm() {
@@ -475,7 +485,7 @@ function checker_location_ulm() {
     request.open("POST", "validate_location_ulm.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("location_ulm=" + location_ulm + "&debut=" + debut);
-
+    updateBracket();
 }
 
 function t_all(){
@@ -852,6 +862,7 @@ function checker_cotisation() {
     request.open("POST", "validate_cotisation.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("cotisation=" + cotisation + "&license=" + license);
+    updateBracket();
 }
 
 function cancelLesson(id,user,facture) {
@@ -867,4 +878,17 @@ function cancelLesson(id,user,facture) {
     request.open("POST", "print_ajax/cancelLesson.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("id="+id+"&user="+user+"$facture="+facture);
+}
+
+function updateBracket() {
+    var request = ajaxOk();
+    var div = document.getElementById("total");
+    request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == 200) {
+            div.innerHTML = " ";
+            div.innerHTML = request.responseText;
+        }
+    }
+    request.open("POST", "print_ajax/valuePanier.php");
+    request.send();
 }

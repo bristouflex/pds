@@ -1,41 +1,57 @@
 <?php
+
 require "init.php";
 
-if (!isConnected()) {
-	unset($_SESSION["user"]);
-	header("Location: login.php");
+if (isConnected()) {
+    /* $bdd = connectBdd();
+      $query2 = $bdd->prepare("SELECT identity FROM inscrit WHERE email = :email");
+      $query2 -> execute(["email" => $_SESSION["email"]]);
+      $resultat2 = $query2 -> fetch();
+      echo $resultat2; */
+
+    unset($_SESSION["error_subscribe"]);
+} else {
+    unset($_SESSION["User"]);
+    header("Location: index.php");
 }
+
+require_once 'view/header.php';
+require_once 'view/menu.php';
 
 ?>
 
+    <!-- CONTENU DE LA PAGE -->
+    <div class="col-md-9">
+        <h3 class="m_1" align="center">Ajouter du crédit</h3><br><br>
+
+        <form method="POST" action="moneyupdate.php">
+            <div class="form-group row">
+                <label for="argent" class="col-md-offset-2 col-md-2 col-form-label">Montant (€)</label>
+                <div class="col-md-2">
+                    <input class="form-control" type="number" name="montant" step="5" value="0" min="0" max="10000"
+                           id="argent" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="pwd_argent" class="col-md-offset-2 col-md-2 col-form-label">mot de passe</label>
+                <div class="col-md-3">
+                    <input class="form-control" type="password" name="password1" placeholder="Mot de passe" id="pwd_argent" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="pwd_argent_confirm" class="col-md-offset-2 col-md-2 col-form-label">confirmation</label>
+                <div class="col-md-3">
+                    <input class="form-control" type="password" name="password2" placeholder="Confirmation" id="pwd_argent_confirm" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-3 col-md-offset-4">
+                    <button value="submit" class="btn btn-secondary btn-lg btn-block" >valider</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
 <?php
-
-if(isset($_SESSION['error_subscribe']) ){
-	$_POST = $_SESSION;
-	echo "<ul>";
-	foreach ($_SESSION['error_subscribe'] as $error) {
-		echo "<li>".$list_of_errors[$error];
-	}
-	echo "</ul>";
-}?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>AEN - Ajouter du crédit</title>
-		<meta name="Description" lang="en" content="Bienvenue sur le site de l'AEN">
-                <?php
-                    require 'header.php';
-                    welcome();
-                    showmoney();
-                ?>
-		<br><br>
-		<form method="POST" action="moneyupdate.php">
-		<input type="number" name="montant" step="5" value="0" min="0" max="10000" required> €<br><br>
-		<input type="password" name="password1" placeholder="Mot de passe" required><br><br>
- 		<input type="password" name="password2" placeholder="Confirmation" required><br><br>
-		<input type="submit" value="Valider"><br>
-	</body>
-</html>
+require_once 'view/footer.php';

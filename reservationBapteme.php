@@ -51,7 +51,12 @@ require_once 'view/menu.php';
                     <span class="amount item_price actual">120.00€</span>
                 </div>
                 <h2 class="quick">Description</h2>
-                <p> Faîtes votre premier voyage en avion!</p><br><br><br>
+                <p> Faîtes votre premier voyage en avion avec un de nos deux fameux aviateurs de haut-vol!</p><br><br><br>
+                <p align="center">Vald et Alk-pote</p>
+                <div class="row">
+                    <img src="images/vald2.jpg" width="250px" class="img-responsive img-thumbnail">
+                    <img src="images/alk-pote.jpg" width="250px" class="img-responsive img-thumbnail">
+                </div>
                 <div class="btn_form button item_add item_1">
                     <form>
                         <?php

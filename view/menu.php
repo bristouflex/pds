@@ -6,11 +6,9 @@
 			<li><a href="historiquetransaction.php">Historique Transactions</a></li>
             <?php
             if ( $_SESSION["user"]->getIsMember() == 0 ) {
-                echo '<li><a href="buyservice.php">Demande de service</a></li>';
                 echo '<li><a href="myservice.php">Mes services</a></li>';
             }
             if ( $_SESSION["user"]->getIsMember() == 1 ) {
-                echo '<li><a href="buyactivite.php">Souscrire à une activité</a></li>';
                 echo '<li><a href="myactivity.php">Mes activités</a></li>';
             }
             ?>

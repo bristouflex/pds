@@ -1,158 +1,169 @@
 <?php
 
+require "init.php";
 
-require_once "init.php";
-if (!isConnected()) {
-    header("location: login.php");
+if (isConnected()) {
+    /* $bdd = connectBdd();
+      $query2 = $bdd->prepare("SELECT identity FROM inscrit WHERE email = :email");
+      $query2 -> execute(["email" => $_SESSION["email"]]);
+      $resultat2 = $query2 -> fetch();
+      echo $resultat2; */
+
+    unset($_SESSION["error_subscribe"]);
+} else {
+    unset($_SESSION["User"]);
+    header("Location: index.php");
 }
 
+require_once 'view/header.php';
+require_once 'view/menu.php';
+
+
+echo "<div class=\"col-md-9\">";
 if ($_SESSION["panier"]->getCotisation()) {
-    echo "Cotisation: <br>";
-    echo "<br>";
+    echo "Cotisation: ";
+    echo "<ul class='list-group>' <li class='list-group-item'>". "License:    ";
     echo $_SESSION['panier']->getCotisation()->getLicense();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>". "Cotisation:    ";
     echo $_SESSION['panier']->getCotisation()->getCotisation();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>". "Date:    ";
     echo $_SESSION['panier']->getCotisation()->getDebut();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>". "Prix:    ";
     echo $_SESSION['panier']->getCotisation()->getPrix();
-    echo "<br>";
-    echo "<a href='destroybracket.php?type=cotisation'>Annuler ce panier</a><br>";
+    echo "</li><li class='list-group-item'>";
+    echo "<a href='destroybracket.php?type=cotisation'>Annuler cet article</a></ul>";
 
 }
 
 if ($_SESSION['panier']->getLocationUlm()) {
-    echo "location ulm: <br>";
-    echo "<br>";
+    echo "location ulm: <ul class='list-group>'";
+    echo "<li class='list-group-item'>". "Ulm:    ";
     echo $_SESSION['panier']->getLocationUlm()->getLocationUlm();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>". "Date:    ";
     echo $_SESSION['panier']->getLocationUlm()->getDate();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>". "Prix:    ";
     echo $_SESSION['panier']->getLocationUlm()->getPrix();
-    echo "<br>";
-    echo "<a href='destroybracket.php?type=locationUlm'>Annuler ce panier</a><br>";
+    echo "</li><li class='list-group-item'>";
+    echo "<a href='destroybracket.php?type=locationUlm'>Annuler cet article</a></ul>";
 
 }
 
 if ($_SESSION['panier']->getLecon()) {
-    echo "lecon: <br>";
-    echo "<br>";
+    echo "lecon: <ul class='list-group>'";
+    echo "<li class='list-group-item'>". "Leçon:    ";
 
     echo $_SESSION['panier']->getLecon()->getLecon();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>". "Instructeur:    ";
     echo $_SESSION['panier']->getLecon()->getInstructeur();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>". "Date:    ";
     echo $_SESSION['panier']->getLecon()->getDate();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>". "Prix:    ";
     echo $_SESSION['panier']->getLecon()->getPrix();
-    echo "<br>";
-    echo "<a href='destroybracket.php?type=lecon'>Annuler ce panier</a><br>";
+    echo "</li><li class='list-group-item'>";
+    echo "<a href='destroybracket.php?type=lecon'>Annuler cet article</a></ul>";
 
 }
 
 if ($_SESSION['panier']->getParachute()) {
-    echo "parachute: <br>";
-    echo "<br>";
-
-    echo $_SESSION['panier']->getParachute()->getParachute();
-    echo "<br>";
+    echo "<h2 align='center'>parachute:</h2> <ul class='list-group>'";
+    echo "</li><li class='list-group-item'>". "Date:    ";
     echo $_SESSION['panier']->getParachute()->getDebut();
-    echo "<br>";
+    echo "<li class='list-group-item'>"."Parachute:    ";
+    echo $_SESSION['panier']->getParachute()->getParachute();
+    echo "</li><li class='list-group-item'>". "Prix:    ";
     echo $_SESSION['panier']->getParachute()->getPrix();
-    echo "<br>";
-    echo "<a href='destroybracket.php?type=parachute'>Annuler ce panier</a><br>";
+    echo "</li><li class='list-group-item'>";
+    echo "<a href='destroybracket.php?type=parachute'>Annuler cet article</a></ul>";
 
 }
 
 
 if ($_SESSION['panier']->getBapteme()) {
-    echo "bapteme: <br>";
-    echo "<br>";
+    echo "bapteme: <ul class='list-group>'";
+    echo "<li class='list-group-item'>". "Bapteme:    ";
 
     echo $_SESSION['panier']->getBapteme()->getBapteme();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>". "Instructeur:    ";
     echo $_SESSION['panier']->getBapteme()->getInstructeur();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>". "Date:    ";
     echo $_SESSION['panier']->getBapteme()->getDate();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>". "Prix:    ";
     echo $_SESSION['panier']->getBapteme()->getPrix();
-    echo "<br>";
-    echo "<a href='destroybracket.php?type=bapteme'>Annuler ce panier</a><br>";
+    echo "</li><li class='list-group-item'>";
+    echo "<a href='destroybracket.php?type=bapteme'>Annuler cet article</a></ul>";
 
 }
 
 if ($_SESSION['panier']->getAvitaillement()) {
-    echo "avitaillement: <br>";
-    echo "<br>";
+    echo "avitaillement: <ul class='list-group>'";
+    echo "<li class='list-group-item'>". "Produit:    ";
 
     echo $_SESSION['panier']->getAvitaillement()->getProduit();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>". "Date:    ";
     echo $_SESSION['panier']->getAvitaillement()->getDebut();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>". "Prix:    ";
     echo $_SESSION['panier']->getAvitaillement()->getPrix();
-    echo "<br>";
-    echo "<a href='destroybracket.php?type=avitaillement'>Annuler ce panier</a><br>";
+    echo "</li><li class='list-group-item'>";
+    echo "<a href='destroybracket.php?type=avitaillement'>Annuler cet article</a></ul>";
 
 }
 
 if ($_SESSION['panier']->getNettoyage()) {
-    echo "nettoyage: <br>";
-    echo "<br>";
+    echo "nettoyage: <ul class='list-group>'";
+    echo "<li class='list-group-item'>". "Produit:    ";
 
     echo $_SESSION['panier']->getNettoyage()->getProduit();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>". "Date:    ";
     echo $_SESSION['panier']->getNettoyage()->getDebut();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>". "Prix:    ";
     echo $_SESSION['panier']->getNettoyage()->getPrix();
-    echo "<br>";
-    echo "<a href='destroybracket.php?type=nettoyage'>Annuler ce panier</a><br>";
+    echo "</li><li class='list-group-item'>";
+    echo "<a href='destroybracket.php?type=nettoyage'>Annuler cet article</a></ul>";
 
 }
 
 if ($_SESSION['panier']->getStationnement()) {
-    echo "stationnement : <br>";
-    echo "<br>";
+    echo "stationnement :<ul class='list-group>'";
+    echo "<li class='list-group-item'>". "Abris:    ";
 
     echo $_SESSION['panier']->getStationnement()->getAbris();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>". "Catégorie:    ";
     echo $_SESSION['panier']->getStationnement()->getCategorie();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>". "Date de début:    ";
     echo $_SESSION['panier']->getStationnement()->getDebut();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>". "Date de fin:    ";
     echo $_SESSION['panier']->getStationnement()->getFin();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>"."Prix:    ";
     echo $_SESSION['panier']->getStationnement()->getPrix();
-    echo "<br>";
-    echo "<a href='destroybracket.php?type=stationnement'>Annuler ce panier</a><br>";
+    echo "</li><li class='list-group-item'>";
+    echo "<a href='destroybracket.php?type=stationnement'>Annuler cet article</a></ul>";
 
 }
 
 if ($_SESSION['panier']->getAtterissage()) {
-    echo "atterissage: <br>";
-    echo "<br>";
+    echo "atterissage: <ul class='list-group>'";
+    echo "<li class='list-group-item'>". "Groupe accoustique:    ";
 
     echo $_SESSION['panier']->getAtterissage()->getGrpAcou();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>"."Balisage:    ";
     echo $_SESSION['panier']->getAtterissage()->getBalisage();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>"."Avion:    ";
     echo $_SESSION['panier']->getAtterissage()->getAvion();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>"."Début:    ";
     echo $_SESSION['panier']->getAtterissage()->getDebut();
-    echo "<br>";
+    echo "</li><li class='list-group-item'>"."Prix:    ";
     echo $_SESSION['panier']->getAtterissage()->getPrix();
-    echo "<br>";
-    echo "<a href='destroybracket.php?type=atterissage'>Annuler ce panier</a><br>";
+    echo "</li><li class='list-group-item'>";
+    echo "<a href='destroybracket.php?type=atterissage'>Annuler cet article</a></ul>";
 
 }
 
 
 if ($_SESSION['panier']->isEmpty()) {
-    echo "<br>";
-    echo "<b>Votre panier est vide</b>";
-    echo "<br>";
+    echo "<h1 align='center'><b>Votre panier est vide</b></h1>";
 } else {
-    echo "<br>";
-    echo "<a href='validatebracket.php'>Valider mon panier</a>";
-    echo "<br>";
+    echo "<button class='btn-lg btn-secondary btn-block'><a href='validatebracket.php'>Valider mon panier</a></button></p>";
 }
+
+require_once 'view/footer.php';
 ?>
