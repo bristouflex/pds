@@ -9,7 +9,7 @@
     <meta name="Description" content="Bienvenue sur le site de l'AEN">
 </head>
 
-<body>
+<body id="index">
     <!-- Modal -->
     <div class="modal fade" id="connexion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
          aria-hidden="true">

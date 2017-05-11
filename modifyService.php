@@ -1,31 +1,40 @@
 <?php
 require "init.php";
 
-
-if (isset($_SESSION['email'])) {
-	
-unset($_SESSION["error_subscribe"]);
-
-welcomeadmin();
-	
-}else{
-	unset($_SESSION["email"]);
-	header("Location: loginadmin.php");
+if(!backisConnected()){
+    session_destroy();
+    header("location: index.php");
 }
 
+
 ?>
-<script src="js/ajax.js"></script>
-<br><br><a href="onlineadmin.php">Retour</a>
-<br><br>
-<button type="button" onclick="tb_abris()">Abris</button>
-<div id="options_b_abris"></div>
-<button type="button" onclick="tb_avion()">Avion</button>
-<div id="options_b_avion"></div>
-<button type="button" onclick="tb_categorie()">Categorie</button>
-<div id="options_b_categorie"></div>
-<button type="button" onclick="tb_grpacoustique()">Groupe Acoustique</button>
-<div id="options_b_grpacoustique"></div>
-<button type="button" onclick="tb_produit()">Produit</button>
-<div id="options_b_produit"></div>
-<button type="button" onclick="tb_redevances()">Redevances</button>
-<div id="options_b_redevances"></div>
+
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Back-office AEN</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="white-box">
+                    <h3 class="box-title">Modifier un service</h3>
+                    <div class="row">
+                        <ul class="list-inline">
+                            <li><button type="button" class="btn" onclick="tb_abris()">Abris</button></li>
+                            <li><button type="button" class="btn" onclick="tb_avion()">Avion</button></li>
+                            <li><button type="button" class="btn" onclick="tb_categorie()">Categorie</button></li>
+                            <li><button type="button" class="btn" onclick="tb_grpacoustique()">Groupe Acoustique</button></li>
+                            <li><button type="button" class="btn" onclick="tb_produit()">Produit</button></li>
+                            <li><button type="button" class="btn" onclick="tb_redevances()">Redevances</button></li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <div id="options_b"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

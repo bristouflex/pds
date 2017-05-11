@@ -186,17 +186,19 @@ function loginadmin($email, $pwd) {
 
     $bdd = connectBdd();
 
-    $query = $bdd->prepare("SELECT password FROM administrateur WHERE email=:email");
+    $query = $bdd->prepare("SELECT password, id, nom, prenom FROM administrateur WHERE email=:email");
     $query->execute(["email" => $email]);
     $resultat = $query->fetch();
 
     $hash = $resultat["password"];
-
     if (password_verify($pwd, $hash)) {
-        $_SESSION["email"] = $email;
+        $_SESSION["email"] =  $email;
+        $_SESSION["id"] = $resultat["id"];
+        $_SESSION["nom"] = $resultat["nom"];
+        $_SESSION["prenom"] = $resultat["prenom"];
         header("Location: onlineadmin.php");
     } else {
-        echo "<center><b>Identifiants Invalide</b></center>";
+        echo "<p align='center'><b>Identifiants Invalide</b></p> ";
         $monfichier = fopen("log.txt", 'a+');
         fwrite($monfichier, $email . " -> " . $pwd . " -> Administrateur" . "\r\n");
         fclose($monfichier);

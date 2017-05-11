@@ -22,7 +22,7 @@ $query->execute([
 giveMoneyBack($_POST["user"], $_POST["facture"]);
 $query = $bdd->prepare("SELECT * FROM options_lecon WHERE annule = 0"); // on cherche toutes les lecons non annulées
 $query->execute();
-echo '<table> 
+echo '<table class="table-responsive table table-bordered"> 
 <tr>
     <th>utilisateur</th>
     <th>date</th>

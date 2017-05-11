@@ -12,11 +12,24 @@ if(!backisConnected()){
     header("location: ../index.php");
 }
 
+echo "<div id=\"page-wrapper\">
+    <div class=\"container-fluid\">
+        <div class=\"row bg-title\">
+            <div class=\"col-lg-3 col-md-4 col-sm-4 col-xs-12\">
+                <h4 class=\"page-title\">Back-office AEN</h4>
+            </div>
+        </div>
+        <div class=\"row\">
+            <div class=\"col-md-12\">
+                <div class=\"white-box\">
+                    <h3 class=\"box-title\">Voir et annuler les leçons</h3>
+                    <div class=\"row\">";
+
 $bdd = connectBdd();
 
 $query = $bdd->prepare("SELECT * FROM options_lecon WHERE annule = 0 ORDER BY DATE DESC"); // on cherche toutes les lecons non annulées
 $query->execute();
-echo '<div id="tableau"><table> 
+echo '<div id="tableau"><table class="table-responsive table table-bordered"> 
 <tr>
     <th>utilisateur</th>
     <th>date</th>
@@ -49,5 +62,9 @@ while($result = $query->fetch()){ //pour chaque resultat de la requête
         <td><button type="button" onclick="cancelLesson('.$result["id"].",".$userId[0].",".$result["facture"].')">annuler</button></td>  
 </tr>'; //on a besoin de l'id de la lecon, de celui de l'utilisateur et de celui de la facture pour annuler et rembourser
 }
-echo "<script src='js/ajax.js'></script>";
 echo '</table></div>';
+echo "</div>                  
+                </div>
+            </div>
+        </div>
+    </div>";

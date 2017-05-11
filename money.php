@@ -11,8 +11,7 @@ if (isConnected()) {
 
     unset($_SESSION["error_subscribe"]);
 } else {
-    unset($_SESSION["User"]);
-    header("Location: index.php");
+    logout();
 }
 
 require_once 'view/header.php';

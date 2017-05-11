@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -17,6 +18,7 @@
     <link href="css/theme-back/css/animate.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/theme-back/css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <!-- color CSS -->
     <link href="css/theme-back/css/colors/default.css" id="theme" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -47,7 +49,7 @@
         <div class="navbar-header">
             <div class="top-left-part">
                 <!-- Logo -->
-                <a class="logo" href="index.html">
+                <a class="logo" href="onlineadmin.php">
                     <!-- Logo icon image, you can use font-icon also --><b>
                         <!--This is dark logo icon--><img src="images/admin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="plugins/images/admin-logo-dark.png" alt="home" class="light-logo" />
                     </b>
@@ -58,11 +60,7 @@
             <!-- /Logo -->
             <ul class="nav navbar-top-links navbar-right pull-right">
                 <li>
-                    <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                        <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
-                </li>
-                <li>
-                    <a class="profile-pic" href="#"> <img src="plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b></a>
+                    <a class="profile-pic" href="#"><b class="hidden-xs"><?php echo $_SESSION["prenom"]; ?></b></a>
                 </li>
             </ul>
         </div>

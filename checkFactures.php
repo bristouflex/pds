@@ -1,25 +1,41 @@
 <?php
 require "init.php";
 
-
-if (isset($_SESSION['email'])) {
-	
-unset($_SESSION["error_subscribe"]);
-
-welcomeadmin();
-	
-}else{
-	unset($_SESSION["email"]);
-	header("Location: loginadmin.php");
+if(!backisConnected()){
+    session_destroy();
+    header("location: index.php");
 }
 
 ?>
-<script language="JavaScript" type="text/javascript" src="js/ajax.js"></script>
-<br><br><a href="onlineadmin.php">Retour</a>
-<br><br>
-<button type="button" onclick="t_all()">Voir toutes les factures</button>
-<div id="options_bill"></div>
-<button type="button" onclick="t_paid()">Voir les factures payées</button>
-<div id="options_paid_bill"></div>
-<button type="button" onclick="t_notpaid()">Voir les factures non payées</button>
-<div id="options_unpaid_bill"></div>
+
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Back-office AEN</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="white-box">
+                    <h3 class="box-title">Voir les factures</h3>
+                    <div class="row">
+                        <ul class="list-inline">
+                            <li><button type="button" class="btn" onclick="t_all()">Voir toutes les factures</button></li>
+                            <li><button type="button" class="btn" onclick="t_paid()">Voir les factures payées</button></li>
+                            <li><button type="button" class="btn" onclick="t_notpaid()">Voir les factures non payées</button></li>
+                            </ul>
+                    </div>
+                    <div class="row">
+                        <div id="options_b"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<div id="content"></div>

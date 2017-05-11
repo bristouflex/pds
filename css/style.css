@@ -1,4 +1,4 @@
-body{
+body#index{
     background-image: url(../images/avion2.jpg);
     background-repeat:no-repeat;
     background-size: cover;
@@ -21,4 +21,9 @@ body{
 .entreprise{
     color: white;
     font-size: 24px;
+}
+
+#liste_utilisateurs{
+    overflow: auto;
+    background-color: white;
 }

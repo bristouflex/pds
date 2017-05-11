@@ -1,21 +1,22 @@
+"use strict";
 function ajaxOk() {
     if (window.XMLHttpRequest)
         return new XMLHttpRequest();
     return new ActiveXObject("Microsoft.XMLHTTP");
 }
 
-function sendMessages() {
+/*function sendMessages() {
     var request = ajaxOk();
     var message = document.getElementsByName("message")[0].value;
     var id = document.getElementsByName("id")[0].value;
     var div = document.getElementById("liste_messages");
 
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
-    }
+    };
     request.open("POST", "addMessage.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("message=" + message + "&id=" + id);
@@ -26,7 +27,7 @@ function noTreat() {
     var div = document.getElementById("content");
 
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -34,17 +35,17 @@ function noTreat() {
     request.open("POST", "displayNoTreated.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
-}
+}*/
 
 function stationnement() {
     var request = ajaxOk();
     var div = document.getElementById("options_stationnement");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
-    }
+    };
     request.open("POST", "print_ajax/print_stationnement.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
@@ -55,11 +56,11 @@ function atterissage() {
     var request = ajaxOk();
     var div = document.getElementById("options_atterissage");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
-    }
+    };
     request.open("POST", "print_ajax/print_atterissage.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
@@ -69,11 +70,11 @@ function nettoyage() {
     var request = ajaxOk();
     var div = document.getElementById("options_nettoyage");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
-    }
+    };
     request.open("POST", "print_nettoyage.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
@@ -83,11 +84,11 @@ function avitaillement() {
     var request = ajaxOk();
     var div = document.getElementById("options_avitaillement");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
-    }
+    };
     request.open("POST", "print_ajax/print_avitaillement.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
@@ -102,7 +103,7 @@ function checker_stationnement() {
             var abris = data[i].value;
         }
     }
-
+    var div;
     var surface = document.getElementsByName("S")[0].value;
     var debut = document.getElementsByName("debut_stationnement")[0].value;
     var fin = document.getElementsByName("fin")[0].value;
@@ -110,12 +111,12 @@ function checker_stationnement() {
     div = document.getElementById("options_stationnement");
 
     for (i = 0; i < data2.length; i++) {
-        if (data2[i].checked == true) {
+        if (data2[i].checked === true) {
             var categorie = data2[i].value;
         }
     }
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
             updateBracket();
@@ -133,17 +134,19 @@ function checker_stationnement() {
 function checker_avitaillement() {
 
     var request = ajaxOk();
+    var essence = null;
+    var div;
     var data = document.getElementsByName("essence");
     for (var i = 0; i < data.length; i++) {
-        if (data[i].checked == true) {
-            var essence = data[i].value;
+        if (data[i].checked === true) {
+            essence = data[i].value;
         }
     }
 
     var debut = document.getElementsByName("debut_avitaillement")[0].value;
     div = document.getElementById("options_avitaillement");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
             updateBracket();
@@ -166,11 +169,11 @@ function checker_nettoyage() {
             var produit = data[i].value;
         }
     }
-
+    var div;
     var debut = document.getElementsByName("debut_nettoyage")[0].value;
     div = document.getElementById("options_nettoyage");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
             updateBracket();
@@ -188,22 +191,22 @@ function checker_atterissage() {
     var request = ajaxOk();
     var data = document.getElementsByName("vroomvroom");
     for (var i = 0; i < data.length; i++) {
-        if (data[i].checked == true) {
+        if (data[i].checked === true) {
             var avion = data[i].value;
         }
     }
     var debut = document.getElementsByName("debut_atterissage")[0].value;
     var data2 = document.getElementsByName("categorie");
     for (i = 0; i < data2.length; i++) {
-        if (data2[i].checked == true) {
+        if (data2[i].checked === true) {
             var categorie = data2[i].value;
 
         }
     }
-
+    var div;
     div = document.getElementById("options_atterissage");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
             updateBracket();
@@ -216,7 +219,7 @@ function checker_atterissage() {
 
 function t1() {
     var i = document.getElementById("options_stationnement");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    if (i.innerHTML === " " || i.innerHTML === "") {
         stationnement();
     } else {
         i.innerHTML = " ";
@@ -225,7 +228,7 @@ function t1() {
 
 function t2() {
     var i = document.getElementById("options_atterissage");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    if (i.innerHTML === " " || i.innerHTML === "") {
         atterissage();
     } else {
         i.innerHTML = " ";
@@ -234,7 +237,7 @@ function t2() {
 
 function t3() {
     var i = document.getElementById("options_avitaillement");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    if (i.innerHTML === " " || i.innerHTML === "") {
         avitaillement();
     } else {
         i.innerHTML = " ";
@@ -243,7 +246,7 @@ function t3() {
 
 function t4() {
     var i = document.getElementById("options_nettoyage");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    if (i.innerHTML === " " || i.innerHTML === "") {
         nettoyage();
     } else {
         i.innerHTML = " ";
@@ -252,7 +255,7 @@ function t4() {
 
 function t5() {
     var i = document.getElementById("panier");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    if (i.innerHTML === " " || i.innerHTML === "") {
         panier();
     } else {
         i.innerHTML = " ";
@@ -263,7 +266,7 @@ function panier() {
     var request = ajaxOk();
     var div = document.getElementById("panier");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -275,7 +278,7 @@ function panier() {
 
 function t6() {
     var i = document.getElementById("options_parachute");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    if (i.innerHTML === " " || i.innerHTML === "") {
         parachute();
     } else {
         i.innerHTML = " ";
@@ -284,7 +287,7 @@ function t6() {
 
 function t7() {
     var i = document.getElementById("options_bapteme");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    if (i.innerHTML === " " || i.innerHTML === "") {
         bapteme();
     } else {
         i.innerHTML = " ";
@@ -293,7 +296,7 @@ function t7() {
 
 function t8() {
     var i = document.getElementById("options_location_ulm");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    if (i.innerHTML === " " || i.innerHTML === "") {
         locationulm();
     } else {
         i.innerHTML = " ";
@@ -301,8 +304,9 @@ function t8() {
 }
 
 function t9() {
-    var i = document.getElementById("options_lecon");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    var i;
+    i = document.getElementById("options_lecon");
+    if (i.innerHTML === " " || i.innerHTML === "") {
         lecon();
     } else {
         i.innerHTML = " ";
@@ -313,7 +317,7 @@ function parachute() {
     var request = ajaxOk();
     var div = document.getElementById("options_parachute");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -327,7 +331,7 @@ function bapteme() {
     var request = ajaxOk();
     var div = document.getElementById("options_bapteme");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -341,7 +345,7 @@ function locationulm() {
     var request = ajaxOk();
     var div = document.getElementById("options_location_ulm");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -355,7 +359,7 @@ function lecon() {
     var request = ajaxOk();
     var div = document.getElementById("options_lecon");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -374,11 +378,11 @@ function checker_parachute() {
             var parachute = data[i].value;
         }
     }
-
+    var div;
     var debut = document.getElementsByName("debut_parachute")[0].value;
     div = document.getElementById("options_parachute");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
             updateBracket();
@@ -407,11 +411,11 @@ function checker_bapteme() {
             var instructeur = data2[i].value;
         }
     }
-
+    var div;
     var debut = document.getElementsByName("debut_bapteme")[0].value;
     div = document.getElementById("options_bapteme");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
             updateBracket();
@@ -439,11 +443,11 @@ function checker_lecon() {
             var instructeur = data2[i].value;
         }
     }
-
+    var div;
     var debut = document.getElementsByName("debut_lecon")[0].value;
     div = document.getElementById("options_lecon");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
             updateBracket();
@@ -464,11 +468,11 @@ function checker_location_ulm() {
             var location_ulm = data[i].value;
         }
     }
-
+    var div;
     var debut = document.getElementsByName("debut_location_ulm")[0].value;
     div = document.getElementById("options_location_ulm");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
             updateBracket();
@@ -481,8 +485,8 @@ function checker_location_ulm() {
 }
 
 function t_all(){
-    var i = document.getElementById("options_bill");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    var i = document.getElementById("content");
+    if (i.innerHTML === " " || i.innerHTML === "") {
         allbill();
     } else {
         i.innerHTML = " ";
@@ -490,8 +494,8 @@ function t_all(){
 }
 
 function t_paid() {
-    var i = document.getElementById("options_paid_bill");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    var i = document.getElementById("content");
+    if (i.innerHTML === " " || i.innerHTML === "") {
         paidbills();
     } else {
         i.innerHTML = " ";
@@ -499,8 +503,8 @@ function t_paid() {
 }
 
 function t_notpaid() {
-    var i = document.getElementById("options_unpaid_bill");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    var i = document.getElementById("content");
+    if (i.innerHTML === " " || i.innerHTML === "") {
         unpaidbills();
     } else {
         i.innerHTML = " ";
@@ -509,9 +513,9 @@ function t_notpaid() {
 
 function allbill() {
     var request = ajaxOk();
-    var div = document.getElementById("options_bill");
+    var div = document.getElementById("content");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -523,9 +527,9 @@ function allbill() {
 
 function paidbills() {
     var request = ajaxOk();
-    var div = document.getElementById("options_paid_bill");
+    var div = document.getElementById("content");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -537,9 +541,9 @@ function paidbills() {
 
 function unpaidbills() {
     var request = ajaxOk();
-    var div = document.getElementById("options_unpaid_bill");
+    var div = document.getElementById("content");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -550,8 +554,8 @@ function unpaidbills() {
 }
 
 function tb_abris() {
-    var i = document.getElementById("options_b_abris");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    var i = document.getElementById("options_b");
+    if (i.innerHTML === " " || i.innerHTML === "") {
         back_abris();
     } else {
         i.innerHTML = " ";
@@ -559,8 +563,8 @@ function tb_abris() {
 }
 
 function tb_avion() {
-    var i = document.getElementById("options_b_avion");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    var i = document.getElementById("options_b");
+    if (i.innerHTML === " " || i.innerHTML === "") {
         back_avion();
     } else {
         i.innerHTML = " ";
@@ -568,8 +572,8 @@ function tb_avion() {
 }
 
 function tb_categorie() {
-    var i = document.getElementById("options_b_categorie");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    var i = document.getElementById("options_b");
+    if (i.innerHTML === " " || i.innerHTML === "") {
         back_categorie();
     } else {
         i.innerHTML = " ";
@@ -577,8 +581,8 @@ function tb_categorie() {
 }
 
 function tb_grpacoustique() {
-    var i = document.getElementById("options_b_grpacoustique");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    var i = document.getElementById("options_b");
+    if (i.innerHTML === " " || i.innerHTML === "") {
         back_grpacoustique();
     } else {
         i.innerHTML = " ";
@@ -586,8 +590,8 @@ function tb_grpacoustique() {
 }
 
 function tb_produit() {
-    var i = document.getElementById("options_b_produit");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    var i = document.getElementById("options_b");
+    if (i.innerHTML === " " || i.innerHTML === "") {
         back_produit();
     } else {
         i.innerHTML = " ";
@@ -595,8 +599,8 @@ function tb_produit() {
 }
 
 function tb_redevances() {
-    var i = document.getElementById("options_b_redevances");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    var i = document.getElementById("options_b");
+    if (i.innerHTML === " " || i.innerHTML === "") {
         back_redevances();
     } else {
         i.innerHTML = " ";
@@ -605,9 +609,9 @@ function tb_redevances() {
 
 function back_abris() {
     var request = ajaxOk();
-    var div = document.getElementById("options_b_abris");
+    var div = document.getElementById("options_b");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -619,9 +623,9 @@ function back_abris() {
 
 function back_avion() {
     var request = ajaxOk();
-    var div = document.getElementById("options_b_avion");
+    var div = document.getElementById("options_b");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -633,9 +637,9 @@ function back_avion() {
 
 function back_categorie() {
     var request = ajaxOk();
-    var div = document.getElementById("options_b_categorie");
+    var div = document.getElementById("options_b");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -647,9 +651,9 @@ function back_categorie() {
 
 function back_grpacoustique() {
     var request = ajaxOk();
-    var div = document.getElementById("options_b_grpacoustique");
+    var div = document.getElementById("options_b");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -661,9 +665,9 @@ function back_grpacoustique() {
 
 function back_produit() {
     var request = ajaxOk();
-    var div = document.getElementById("options_b_produit");
+    var div = document.getElementById("options_b");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -675,9 +679,9 @@ function back_produit() {
 
 function back_redevances() {
     var request = ajaxOk();
-    var div = document.getElementById("options_b_redevances");
+    var div = document.getElementById("options_b");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -688,8 +692,8 @@ function back_redevances() {
 }
 
 function tb_Bapteme() {
-    var i = document.getElementById("options_b_Bapteme");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    var i = document.getElementById("options_b");
+    if (i.innerHTML === " " || i.innerHTML === "") {
         back_Bapteme();
     } else {
         i.innerHTML = " ";
@@ -697,8 +701,8 @@ function tb_Bapteme() {
 }
 
 function tb_Cotisation() {
-    var i = document.getElementById("options_b_Cotisation");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    var i = document.getElementById("options_b");
+    if (i.innerHTML === " " || i.innerHTML === "") {
         back_Cotisation();
     } else {
         i.innerHTML = " ";
@@ -706,8 +710,8 @@ function tb_Cotisation() {
 }
 
 function tb_Lecon() {
-    var i = document.getElementById("options_b_Lecon");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    var i = document.getElementById("options_b");
+    if (i.innerHTML === " " || i.innerHTML === "") {
         back_Lecon();
     } else {
         i.innerHTML = " ";
@@ -715,8 +719,8 @@ function tb_Lecon() {
 }
 
 function tb_LocationULM() {
-    var i = document.getElementById("options_b_LocationULM");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    var i = document.getElementById("options_b");
+    if (i.innerHTML === " " || i.innerHTML === "") {
         back_LocationULM();
     } else {
         i.innerHTML = " ";
@@ -724,8 +728,8 @@ function tb_LocationULM() {
 }
 
 function tb_Parachute() {
-    var i = document.getElementById("options_b_Parachute");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    var i = document.getElementById("options_b");
+    if (i.innerHTML === " " || i.innerHTML === "") {
         back_Parachute();
     } else {
         i.innerHTML = " ";
@@ -734,9 +738,9 @@ function tb_Parachute() {
 
 function back_Bapteme() {
     var request = ajaxOk();
-    var div = document.getElementById("options_b_Bapteme");
+    var div = document.getElementById("options_b");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -748,9 +752,9 @@ function back_Bapteme() {
 
 function back_Cotisation() {
     var request = ajaxOk();
-    var div = document.getElementById("options_b_Cotisation");
+    var div = document.getElementById("options_b");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -762,9 +766,9 @@ function back_Cotisation() {
 
 function back_Lecon() {
     var request = ajaxOk();
-    var div = document.getElementById("options_b_Lecon");
+    var div = document.getElementById("options_b");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -776,9 +780,9 @@ function back_Lecon() {
 
 function back_LocationULM() {
     var request = ajaxOk();
-    var div = document.getElementById("options_b_LocationULM");
+    var div = document.getElementById("options_b");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -790,9 +794,9 @@ function back_LocationULM() {
 
 function back_Parachute() {
     var request = ajaxOk();
-    var div = document.getElementById("options_b_Parachute");
+    var div = document.getElementById("options_b");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -806,7 +810,7 @@ function cotisation() {
     var request = ajaxOk();
     var div = document.getElementById("options_cotisation");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
@@ -818,7 +822,7 @@ function cotisation() {
 
 function t10() {
     var i = document.getElementById("options_cotisation");
-    if (i.innerHTML == " " || i.innerHTML == "") {
+    if (i.innerHTML === " " || i.innerHTML === "") {
         cotisation();
     } else {
         i.innerHTML = " ";
@@ -842,15 +846,15 @@ function checker_cotisation() {
             var license = data2[i].value;
         }
     }
-
+    var div;
     div = document.getElementById("options_cotisation");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
             updateBracket();
         }
-    }
+    };
 
     request.open("POST", "ajax_validate/validate_cotisation.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -859,14 +863,14 @@ function checker_cotisation() {
 
 function cancelLesson(id,user,facture) {
     var request = ajaxOk();
+    var div;
     div = document.getElementById('tableau');
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
-    }
-    console.log(id+" "+user+" "+facture)
+    };
     request.open("POST", "print_ajax/cancelLesson.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("id="+id+"&user="+user+"$facture="+facture);
@@ -876,11 +880,162 @@ function updateBracket() {
     var request = ajaxOk();
     var div = document.getElementById("total");
     request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
+        if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
             div.innerHTML = request.responseText;
         }
-    }
+    };
     request.open("POST", "print_ajax/valuePanier.php");
     request.send();
 }
+
+function display_back_modifyActivity() {
+    var request = ajaxOk();
+    var div = document.getElementById("content");
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = " ";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "modifyActivity.php");
+    request.send();
+}
+
+function display_back_modifyLecon(){
+    var request = ajaxOk();
+    var div = document.getElementById("content");
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = " ";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "modifyLessons.php");
+    request.send();
+}
+
+function display_back_modifyService(){
+    var request = ajaxOk();
+    var div = document.getElementById("content");
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = " ";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "modifyService.php");
+    request.send();
+}
+
+function display_back_checkFacture() {
+    var request = ajaxOk();
+    var div = document.getElementById("content");
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = " ";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "checkFactures.php");
+    request.send();
+}
+
+function display_back_king() {
+    var request = ajaxOk();
+    var div = document.getElementById("content");
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = " ";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "king.php");
+    request.send();
+}
+
+function display_back_myinfoadmin() {
+    var request = ajaxOk();
+    var div = document.getElementById("content");
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = " ";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "myinfoadmin.php");
+    request.send();
+}
+
+function display_back_myinfoadmin() {
+    var request = ajaxOk();
+    var div = document.getElementById("content");
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = " ";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "myinfoadmin.php");
+    request.send();
+}
+
+function delete_user_plane(id) {
+    var request = ajaxOk();
+    var div = document.getElementById("print_planes");
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = " ";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "print_ajax/print_list_planes.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("id_plane="+id);
+}
+
+function display_user_plane() {
+    var request = ajaxOk();
+    var div = document.getElementById("print_planes");
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = " ";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "print_ajax/print_list_planes.php");
+    request.send();
+}
+
+function form_add_plane() {
+    var request = ajaxOk();
+    var div = document.getElementById("print_planes");
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = " ";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "addPlane.php");
+    request.send();
+}
+
+function add_plane() {
+    var request = ajaxOk();
+    var div = document.getElementById("print_planes");
+    var nom = document.getElementById("nom").value;
+    var type = document.getElementById("types_avions").value;
+    var superficie = document.getElementById("superficie_avion").value;
+    var poids = document.getElementById("poids_avion").value;
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = " ";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "addPlane.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("type="+type+"&nom="+nom+"&superficie="+superficie+"&poids="+poids);
+}
+
+

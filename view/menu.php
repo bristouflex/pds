@@ -7,6 +7,7 @@
             <?php
             if ( $_SESSION["user"]->getIsMember() == 0 ) {
                 echo '<li><a href="myservice.php">Mes services</a></li>';
+                echo '<li><a href="myplanes.php">Mes avions</a></li>';
             }
             if ( $_SESSION["user"]->getIsMember() == 1 ) {
                 echo '<li><a href="myactivity.php">Mes activités</a></li>';
