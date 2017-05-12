@@ -29,8 +29,8 @@ else{
     }
     echo '</table>';
     echo  '</div>';
-    echo "<input type='datetime-local' name='debut_avitaillement' required>";
-echo "<input type='button' value='Valider Avitaillement' onclick='checker_avitaillement()' required>";
+    echo "<input class='form-control' type='datetime-local' name='debut_avitaillement' required>";
+echo "<input type='button' class='btn' value='Valider Avitaillement' onclick='checker_avitaillement()' required>";
 
 echo "</form>";
 }

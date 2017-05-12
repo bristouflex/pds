@@ -4,10 +4,10 @@ class stationnement{
   private $categorie_;
   private $debut_;
   private $fin_;
-  private $prix;
+  private $prix_;
 
 
-  public function __construct($abr,$ctgr,$dbt,$fn){
+  public function __construct($abr,$ctgr,$dbt,$fn, $prx){
     $this->abris_ = $abr;
     $this->categorie_ = $ctgr;
     $this->debut_ = $dbt;
@@ -26,7 +26,7 @@ class stationnement{
     return $this->debut_;
   }
   public function getFin(){
-    return $this->fin;
+    return $this->fin_;
   }
   public function getPrix(){
     return $this->prix_;
@@ -51,7 +51,7 @@ class stationnement{
 
 
   public function __toString(){
-    return $this->abris_." | ".$this->categorie_." | ".$this->debut_." | ".$this->fin_." | ".$this->$prix_;
+    return $this->abris_." | ".$this->categorie_." | ".$this->debut_." | ".$this->fin_." | ".$this->prix_;
   }
 
 }

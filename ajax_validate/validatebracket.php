@@ -9,7 +9,8 @@ $price = $_SESSION["panier"]->getTotal();
 
 
 if (!$_SESSION['panier']->isEmpty()) {
-    $path = "factures/" . $_SESSION['user']->getEmail() . "_" . date('Y-m-d_H-i-s') . ".pdf";
+    $path = "../factures/" . $_SESSION['user']->getEmail() . "_" . date('Y-m-d_H-i-s') . ".pdf";
+    $pathBdd = "factures/" . $_SESSION['user']->getEmail() . "_" . date('Y-m-d_H-i-s') . ".pdf"; //chemin a mettre en bdd
 
     $query = $bdd->prepare(" INSERT INTO facture (idUser,adresseIP,montant,chemin,ispaid)
 	VALUES (:idUser, :adresseIP, :montant, :chemin, :ispaid)");
@@ -18,7 +19,7 @@ if (!$_SESSION['panier']->isEmpty()) {
         "idUser" => $_SESSION['user']->getId(),
         "adresseIP" => $_SERVER["REMOTE_ADDR"],
         "montant" => $price,
-        "chemin" => $path,
+        "chemin" => $pathBdd,
         "ispaid" => 0
     ]);
 
@@ -218,7 +219,7 @@ if (!$_SESSION['panier']->isEmpty()) {
     echo "Prix total : " . $price . "<br>";
 }
 $content = ob_get_clean();
-require_once("html2pdf/html2pdf.class.php");
+require_once("../html2pdf/html2pdf.class.php");
 try {
     $html2pdf = new HTML2PDF("P", "A4", "fr");
     // $html2pdf->setModeDebug();
@@ -233,7 +234,7 @@ try {
 $_SESSION["panier"] = new Panier();
 
 if ($_SESSION["user"]->getIsMember()) {
-    header('Location: myactivity.php');
+    header('Location: ../myactivity.php');
 } else {
-    header('Location: myservice.php');
+    header('Location: ../myservice.php');
 }

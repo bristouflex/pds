@@ -163,7 +163,7 @@ if ($_SESSION['panier']->getAtterissage()) {
 if ($_SESSION['panier']->isEmpty()) {
     echo "<h1 align='center'><b>Votre panier est vide</b></h1>";
 } else {
-    echo "<button class='btn-lg btn-secondary btn-block'><a href='ajax_validate/validatebracket.php'>Valider mon panier</a></button></p>";
+    echo "<a href='ajax_validate/validatebracket.php'><button class='btn-lg btn-secondary btn-block'>Valider mon panier</button></a></p>";
 }
 
 require_once 'view/footer.php';

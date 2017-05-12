@@ -440,25 +440,26 @@ function availableVehicule($vehicule, $date){
     }
 
 function alreadyLanded($startDate){
-
   $bdd = connectBdd();
   $query = $bdd -> prepare("SELECT id FROM facture WHERE idUser = :id");
   $query->execute(["id" => $_SESSION["user"]->getId()]);
   while($factures = $query->fetch()){
-      $debutStationnement = $bdd->prepare("SELECT debut FROM options_stationnement WHERE facture = :facture");
+      $debutStationnement = $bdd->prepare("SELECT debut FROM options_atterissage WHERE facture = :facture");
       $debutStationnement->execute(["facture" => $factures[0]]);
       $resultat = $debutStationnement->fetch();
       if (empty($resultat)) {
           continue;
       } else {
-          if ($startDate == $resultat['debut']) {
+          if (strtotime($startDate) == strtotime($resultat['debut'])) {
               return 1;
           }
        }
   }
-    /*if($_SESSION["panier"]->getAtterissage()->getDate == $startDate){
-        return 1;
-    }*/
+  if($_SESSION["panier"]->getAtterissage()) {
+      if (strtotime($_SESSION["panier"]->getAtterissage()->getDate()) == strtotime($startDate)) {
+          return 1;
+      }
+  }
   return 0;
 
 }
@@ -561,5 +562,19 @@ function giveMoneyBack($idUser, $idfacture){
     ]);
 
 }
+
+function respectLandingChoice($date, $nom){
+    $timeStamp = strtotime($date);
+    if((date("D", $timeStamp) == "Sun" || date("D", $timeStamp) == "Sat") && strstr($nom, "week-end") != false){
+        return 1;
+    }
+
+    if(date("D", $timeStamp) != "Sun" && date("D", $timeStamp) != "Sat" && strstr($nom, "week-end") == false){
+        return 1;
+    }
+    return 0;
+}
+
+
 
 ?>

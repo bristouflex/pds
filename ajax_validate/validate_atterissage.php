@@ -3,10 +3,10 @@
 require 'initValidate.php';
 $error = 0;
 $bdd = connectBdd();
-$query = $bdd->prepare("SELECT ttc FROM avion WHERE id = :id");
+$query = $bdd->prepare("SELECT ttc, periode FROM avion WHERE id = :id");
 $query->execute([ "id" => $_POST["avion"]]);
-$verif = $query->fetch();
-$prix = $verif[0]; // prix avion
+$infos = $query->fetch();
+$prix = $infos['ttc']; // prix avion
 if(!empty($_POST["debut"])){
     $heure = ($_POST["debut"][11]) . ($_POST["debut"][12]);
     $heure = (int) $heure;
@@ -21,11 +21,18 @@ if(!empty($_POST["debut"])){
         $verif = $query->fetch();
         $prix *= $verif[0];
     }
+    if(!respectLandingChoice($_POST["debut"], $infos["periode"])){
+        echo '<b> Le jour selectionné ne correspond pas à l\'offre!</b><br>';
+        $error = 1;
+    }
+
 }
 else{
     echo "<p><b> veuillez saisir une heure d'arrivée</b></p>";
     $error = 1;
 }
+
+
 $query = $bdd->prepare("SELECT ttc FROM redevances WHERE nom = 'balisage' ");
 $query->execute();
 $verif = $query->fetch();
@@ -40,8 +47,8 @@ if(landingPossible($_POST["debut"]) != 1){
 $prix += $verif[0]; // redevance balisage
 
 if ($error != 1) {
-    $_SESSION["panier"]->setAtterissage(new Atterissage($_POST['categorie'], $verif[0],  $_POST["avion"], $prix, $_POST["debut"], $verif[0]));
-  //  $_SESSION["panier"][0] = [ $_POST['categorie'], $verif[0], $_POST["avion"], $_POST["debut"], $prix];
+    $_SESSION["panier"]->setAtterissage(new Atterissage($_POST['categorie'], 0,  $_POST["avion"], $prix, $_POST["debut"], $verif[0]));
+    echo "<p align='center'>achat effectué</p>";
 }else {
     $_SESSION["panier"]->setAtterissage(null);
 }

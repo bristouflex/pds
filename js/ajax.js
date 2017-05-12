@@ -75,7 +75,7 @@ function nettoyage() {
             div.innerHTML = request.responseText;
         }
     };
-    request.open("POST", "print_nettoyage.php");
+    request.open("POST", "print_ajax/print_nettoyage.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -350,7 +350,7 @@ function locationulm() {
             div.innerHTML = request.responseText;
         }
     }
-    request.open("POST", "print_location_ulm.php");
+    request.open("POST", "print_ajax/print_location_ulm.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
 }
@@ -1036,6 +1036,38 @@ function add_plane() {
     request.open("POST", "addPlane.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("type="+type+"&nom="+nom+"&superficie="+superficie+"&poids="+poids);
+}
+
+function update_atterissage_form(){
+    var request = ajaxOk();
+    var div = document.getElementById("liste_atterissage");
+    var avion = document.getElementById("liste_avions").value;
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = "";
+            div.innerHTML = request.responseText;
+        }
+    };
+
+    request.open("POST", "print_ajax/print_update_atterissage.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("avion="+avion);
+}
+
+function update_stationnement_form(){
+    var request = ajaxOk();
+    var div = document.getElementById("formulaire");
+    var avion = document.getElementById("liste_avions").value;
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = "";
+            div.innerHTML = request.responseText;
+        }
+    };
+
+    request.open("POST", "print_ajax/print_update_stationnement.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("avion="+avion);
 }
 
 

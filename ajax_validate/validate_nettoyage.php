@@ -14,12 +14,11 @@ if (verifDateService(strtotime($_POST["debut"])) == FALSE) {
     unset($_SESSION["panier"][2]);
     $error = 1;
 }
-$_SESSION["panier"][2] = array();
 $find = canReserve($_POST["debut"]);
-echo $find;
+
 if($find == 0){
-    echo 'vous devez reserver un atterissage avant de de demander un tel service <br>';
-    unset($_SESSION["panier"][2]);
+    echo '<p><b>vous devez reserver un atterissage avant de de demander un tel service</b></p>';
+    $error = 1;
 }
 if ($error != 1 && $find == 1) {
 

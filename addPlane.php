@@ -56,6 +56,8 @@ if(isset($_POST["type"]) && $_POST["nom"] != "" && isset($_POST["superficie"]) &
             <select class="form-control" id="types_avions" name="type">
                 <option value="mono-turbine">mono-turbine</option>
                 <option value="reacteur">réacteur</option>
+                <option value="helicoptere">hélicoptère</option>
+                <option value="ULM">ULM</option>
             </select>
         </div>
     </div>

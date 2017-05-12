@@ -15,6 +15,7 @@ class Atterissage {
     $this->avion_ = $avn;
     $this->prix_ = $prx;
     $this->debut_ = $dbt;
+    $this->balisage_ = $balisage;
   }
 
   public function getGrpAcou(){

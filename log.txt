@@ -24,3 +24,5 @@ olivier.mako@live.fr -> mako -> Membre
 olivier.mako@live.fr -> mako -> Membre
 b.hounza@laposte.net -> trezt -> Administrateur
 bittan@live.fr -> bittan -> Administrateur
+mako@live.fr -> mako -> Client
+mako@live.fr -> mako -> Client

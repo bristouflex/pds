@@ -76,7 +76,7 @@ while ($data = $query->fetch()) {
     echo "<td>" . $i . "</td>";
     echo "<td>" . $data['adresseIP'] . "</td>";
     echo "<td>" . $data['montant'] . "</td>";
-    echo "<td>" . "<a href=" . $data['chemin'] . ">Télécharger</a>" . "</td>";
+    echo "<td>" . "<a href='" . $data['chemin'] . "'>Télécharger</a>" . "</td>";
     echo "<td>";
     echo $data['ispaid'] ? "payée" : "non payée" . "</td>";
     echo "<td><a href='payfacture.php?idfacture=$data[id]'>Payer</a></td>";
