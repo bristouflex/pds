@@ -65,9 +65,9 @@ if (isset($_SESSION["user"])) {
                 </div>
             </div>";
     echo "<div class=\"form-group row\">
-                <label for=\"password_pay_conf\" class=\"col-md-offset-2 col-md-2 col-form-label\">Confirmation</label>
+                <label for=\"password_pay_conf\" class=\"col-md-offset-2 col-md-2 col-form-label\">Nouveau mot de passe</label>
                 <div class=\"col-md-2\">
-                   <input class=\"form-control\" type='password' name='password2' placeholder='Confirmation' id='password_pay_conf' required>
+                   <input class=\"form-control\" type='password' name='password2' placeholder='Nouveau mot de passe' id='password_pay_conf' required>
                 </div>
             </div>";
     echo "<div class=\"form-group row\">

@@ -18,7 +18,7 @@ echo '<div id="page-wrapper">
             <div class="col-md-12">
                 <div class="white-box" id="liste_utilisateurs">
                     <h3 class="box-title">Modifier un service</h3>';
-echo "<table class='table-bordered table table-responsive'>";
+echo "<div class='table-bordered table-responsive'><table class='table'>";
 $bdd = connectBdd();
 $answer = $bdd->query('SELECT * FROM inscrit');
 while ($data = $answer->fetch()) {
@@ -44,7 +44,7 @@ while ($data = $answer->fetch()) {
     echo "<td><a class='boutonstylee' href='deleteking.php?id=" . $data['id'] . "'>BAN HAMMER</a></td>";
     echo "</tr>";
 }
-echo "</table>";
+echo "</table></div>";
 
 ?>
         </div>

@@ -2,23 +2,18 @@
 
 require 'initprintback.php';
 
-$i=0;
-echo "<br><br>";
-echo "<table>";
+
+echo "<table class='table table-bordered table-responsive'>";
+echo "<tr><th>Nom</th><th>HT</th><th>TVA</th><th>TTC</th></tr>";
     $bdd = connectBdd();
     $answer = $bdd->query ('SELECT * FROM redevances');
     while($data = $answer->fetch()){
-        if ($i==0) {
-            echo "<tr><b>Nom</b></td><td><b>HT</b></td><td><b>TVA</b></td><td><td><b>TTC</b></td></tr>";
-            $i=1;
-        }
-         echo "<tr>";
-
+        echo "<tr>";
         echo "<td>".$data['nom']."</td>";
-        echo "<td>".$data['ht']."</td>";
-        echo "<td>".$data['tva']."</td>";
-        echo "<td>".$data['ttc']."</td>";
-        echo "<td><a class='boutonstylee' href='modifyServiceRedevances.php?nom=".$data['nom']."'>Modifier</a></td>";
+        echo "<td><input type='text' id='prix".$data['nom']."' value='".$data['ht']."' placeholder='prix' </td>";
+        echo "<td>" . $data['tva'] . "</td>";
+        echo "<td>" . $data['ttc'] . "</td>";
+        echo "<td><button class='btn' onclick='update_redevance_modification(\"" . $data['nom'] . "\")'>Modifier</button></td>";
         echo "</tr>";
     }
     echo "</table>";

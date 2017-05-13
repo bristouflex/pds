@@ -9,7 +9,7 @@ require "init.php";
  */
 if(!backisConnected()){
     session_destroy();
-    header("location: ../index.php");
+    header("location: index.php");
 }
 
 echo "<div id=\"page-wrapper\">
@@ -27,7 +27,7 @@ echo "<div id=\"page-wrapper\">
 
 $bdd = connectBdd();
 
-$query = $bdd->prepare("SELECT * FROM options_lecon WHERE annule = 0 ORDER BY DATE DESC"); // on cherche toutes les lecons non annulées
+$query = $bdd->prepare("SELECT * FROM options_lecon WHERE annule = 0 AND date >= CURRENT_TIMESTAMP ORDER BY DATE DESC"); // on cherche toutes les lecons non annulées
 $query->execute();
 echo '<div id="tableau"><table class="table-responsive table table-bordered"> 
 <tr>

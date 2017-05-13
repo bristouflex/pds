@@ -26,3 +26,4 @@ b.hounza@laposte.net -> trezt -> Administrateur
 bittan@live.fr -> bittan -> Administrateur
 mako@live.fr -> mako -> Client
 mako@live.fr -> mako -> Client
+b.hounza@laposte.net -> bittan -> Client

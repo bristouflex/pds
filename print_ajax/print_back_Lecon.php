@@ -2,20 +2,16 @@
 
 require 'initprintback.php';
 
-$i=0;
-echo "<br><br>";
-echo "<table>";
+
+echo "<table class='table table-bordered table-responsive'>";
+    echo "<tr><th>ID</th><th>Prix</th></tr>";
     $bdd = connectBdd();
     $answer = $bdd->query ('SELECT * FROM lecon');
     while($data = $answer->fetch()){
-        if ($i==0) {
-            echo "<tr><td><b>ID</b></td><td><b>Prix</b></td></tr>";
-            $i=1;
-        }      
         echo "<tr>";        
         echo "<td>".$data['id']."</td>";
-        echo "<td>".$data['prix']."</td>";
-        echo "<td><a class='boutonstylee' href='modifyActivityLecon.php?id=".$data['id']."'>Modifier</a></td>";
+        echo "<td><input type='text' id='prix".$data['id']."' value='".$data['prix']."' placeholder='prix' </td>";
+        echo "<td><button class='btn' onclick='update_lecon_modification(".$data['id'].")'>Modifier</button></td>";
         echo "</tr>";
     }
     echo "</table>";

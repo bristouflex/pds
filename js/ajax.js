@@ -6,36 +6,36 @@ function ajaxOk() {
 }
 
 /*function sendMessages() {
-    var request = ajaxOk();
-    var message = document.getElementsByName("message")[0].value;
-    var id = document.getElementsByName("id")[0].value;
-    var div = document.getElementById("liste_messages");
+ var request = ajaxOk();
+ var message = document.getElementsByName("message")[0].value;
+ var id = document.getElementsByName("id")[0].value;
+ var div = document.getElementById("liste_messages");
 
-    request.onreadystatechange = function () {
-        if (request.readyState === 4 && request.status === 200) {
-            div.innerHTML = " ";
-            div.innerHTML = request.responseText;
-        }
-    };
-    request.open("POST", "addMessage.php");
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send("message=" + message + "&id=" + id);
-}
+ request.onreadystatechange = function () {
+ if (request.readyState === 4 && request.status === 200) {
+ div.innerHTML = " ";
+ div.innerHTML = request.responseText;
+ }
+ };
+ request.open("POST", "addMessage.php");
+ request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ request.send("message=" + message + "&id=" + id);
+ }
 
-function noTreat() {
-    var request = ajaxOk();
-    var div = document.getElementById("content");
+ function noTreat() {
+ var request = ajaxOk();
+ var div = document.getElementById("content");
 
-    request.onreadystatechange = function () {
-        if (request.readyState === 4 && request.status === 200) {
-            div.innerHTML = " ";
-            div.innerHTML = request.responseText;
-        }
-    }
-    request.open("POST", "displayNoTreated.php");
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send();
-}*/
+ request.onreadystatechange = function () {
+ if (request.readyState === 4 && request.status === 200) {
+ div.innerHTML = " ";
+ div.innerHTML = request.responseText;
+ }
+ }
+ request.open("POST", "displayNoTreated.php");
+ request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ request.send();
+ }*/
 
 function stationnement() {
     var request = ajaxOk();
@@ -129,8 +129,6 @@ function checker_stationnement() {
 }
 
 
-
-
 function checker_avitaillement() {
 
     var request = ajaxOk();
@@ -158,8 +156,6 @@ function checker_avitaillement() {
 }
 
 
-
-
 function checker_nettoyage() {
 
     var request = ajaxOk();
@@ -184,7 +180,6 @@ function checker_nettoyage() {
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("produit=" + produit + "&debut=" + debut);
 }
-
 
 
 function checker_atterissage() {
@@ -484,8 +479,8 @@ function checker_location_ulm() {
     request.send("location_ulm=" + location_ulm + "&debut=" + debut);
 }
 
-function t_all(){
-    var i = document.getElementById("content");
+function t_all() {
+    var i = document.getElementById("options_b");
     if (i.innerHTML === " " || i.innerHTML === "") {
         allbill();
     } else {
@@ -494,7 +489,7 @@ function t_all(){
 }
 
 function t_paid() {
-    var i = document.getElementById("content");
+    var i = document.getElementById("options_b");
     if (i.innerHTML === " " || i.innerHTML === "") {
         paidbills();
     } else {
@@ -503,7 +498,7 @@ function t_paid() {
 }
 
 function t_notpaid() {
-    var i = document.getElementById("content");
+    var i = document.getElementById("options_b");
     if (i.innerHTML === " " || i.innerHTML === "") {
         unpaidbills();
     } else {
@@ -513,7 +508,7 @@ function t_notpaid() {
 
 function allbill() {
     var request = ajaxOk();
-    var div = document.getElementById("content");
+    var div = document.getElementById("options_b");
     request.onreadystatechange = function () {
         if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
@@ -527,7 +522,7 @@ function allbill() {
 
 function paidbills() {
     var request = ajaxOk();
-    var div = document.getElementById("content");
+    var div = document.getElementById("options_b");
     request.onreadystatechange = function () {
         if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
@@ -541,7 +536,7 @@ function paidbills() {
 
 function unpaidbills() {
     var request = ajaxOk();
-    var div = document.getElementById("content");
+    var div = document.getElementById("options_b");
     request.onreadystatechange = function () {
         if (request.readyState === 4 && request.status === 200) {
             div.innerHTML = " ";
@@ -861,7 +856,7 @@ function checker_cotisation() {
     request.send("cotisation=" + cotisation + "&license=" + license);
 }
 
-function cancelLesson(id,user,facture) {
+function cancelLesson(id, user, facture) {
     var request = ajaxOk();
     var div;
     div = document.getElementById('tableau');
@@ -873,7 +868,7 @@ function cancelLesson(id,user,facture) {
     };
     request.open("POST", "print_ajax/cancelLesson.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send("id="+id+"&user="+user+"$facture="+facture);
+    request.send("id=" + id + "&user=" + user + "$facture=" + facture);
 }
 
 function updateBracket() {
@@ -902,7 +897,7 @@ function display_back_modifyActivity() {
     request.send();
 }
 
-function display_back_modifyLecon(){
+function display_back_modifyLecon() {
     var request = ajaxOk();
     var div = document.getElementById("content");
     request.onreadystatechange = function () {
@@ -915,7 +910,7 @@ function display_back_modifyLecon(){
     request.send();
 }
 
-function display_back_modifyService(){
+function display_back_modifyService() {
     var request = ajaxOk();
     var div = document.getElementById("content");
     request.onreadystatechange = function () {
@@ -991,7 +986,7 @@ function delete_user_plane(id) {
     };
     request.open("POST", "print_ajax/print_list_planes.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send("id_plane="+id);
+    request.send("id_plane=" + id);
 }
 
 function display_user_plane() {
@@ -1035,10 +1030,10 @@ function add_plane() {
     };
     request.open("POST", "addPlane.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send("type="+type+"&nom="+nom+"&superficie="+superficie+"&poids="+poids);
+    request.send("type=" + type + "&nom=" + nom + "&superficie=" + superficie + "&poids=" + poids);
 }
 
-function update_atterissage_form(){
+function update_atterissage_form() {
     var request = ajaxOk();
     var div = document.getElementById("liste_atterissage");
     var avion = document.getElementById("liste_avions").value;
@@ -1051,10 +1046,10 @@ function update_atterissage_form(){
 
     request.open("POST", "print_ajax/print_update_atterissage.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send("avion="+avion);
+    request.send("avion=" + avion);
 }
 
-function update_stationnement_form(){
+function update_stationnement_form() {
     var request = ajaxOk();
     var div = document.getElementById("formulaire");
     var avion = document.getElementById("liste_avions").value;
@@ -1067,7 +1062,187 @@ function update_stationnement_form(){
 
     request.open("POST", "print_ajax/print_update_stationnement.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send("avion="+avion);
+    request.send("avion=" + avion);
 }
 
+function print_lecon_modification(id) {
+    var request = ajaxOk();
+    var div = document.getElementById("content");
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = "";
+            div.innerHTML = request.responseText;
+        }
+    };
 
+    request.open("POST", "modifyActivityLecon.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("id=" + id);
+}
+
+function update_lecon_modification(id) {
+    var request = ajaxOk();
+    var div = document.getElementById("content");
+    var prix = document.getElementById("prix" + id).value;
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = "";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "modifyActivityLecon.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("id=" + id + "&prix=" + prix);
+}
+
+function update_bapteme_modification(id) {
+    var request = ajaxOk();
+    var div = document.getElementById("content");
+    var prix = document.getElementById("prix" + id).value;
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = "";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "modifyActivityBapteme.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("id=" + id + "&prix=" + prix);
+}
+
+function update_cotisation_modification(id) {
+    var request = ajaxOk();
+    var div = document.getElementById("content");
+    var prix = document.getElementById("prix" + id).value;
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = "";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "modifyActivityCotisation.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("id=" + id + "&prix=" + prix);
+}
+
+function update_location_ulm_modification(id) {
+    var request = ajaxOk();
+    var div = document.getElementById("content");
+    var prix = document.getElementById("prix" + id).value;
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = "";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "modifyActivityLocationULM.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("id=" + id + "&prix=" + prix);
+}
+
+function update_parachute_modification(id) {
+    var request = ajaxOk();
+    var div = document.getElementById("content");
+    var prix = document.getElementById("prix" + id).value;
+    var nom = document.getElementById("nom" + id).value;
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = "";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "modifyActivityParachute.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("id=" + id + "&prix=" + prix + "&nom=" + nom);
+}
+
+function update_abris_modification(id) {
+    var request = ajaxOk();
+    var div = document.getElementById("content");
+    var prix = document.getElementById("prix" + id).value;
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = "";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "modifyServiceAbris.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("id=" + id + "&prix=" + prix);
+}
+
+function update_avion_modification(id) {
+    var request = ajaxOk();
+    var div = document.getElementById("content");
+    var prix = document.getElementById("prix" + id).value;
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = "";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "modifyServiceAvion.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("id=" + id + "&prix=" + prix);
+}
+
+function update_categorie_modification(id){
+    var request = ajaxOk();
+    var div = document.getElementById("content");
+    var prix = document.getElementById("prix" + id).value;
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = "";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "modifyServiceCategorie.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("id=" + id + "&prix=" + prix);
+}
+
+function update_grpacoustique_modification(id){
+    var request = ajaxOk();
+    var div = document.getElementById("content");
+    var prix = document.getElementById("jour" + id).value;
+    var prix2 = document.getElementById("nuit" + id).value;
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = "";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "modifyServicegrpacoustique.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("id=" + id + "&prix=" + prix+ "&prix2=" + prix2);
+}
+
+function update_produit_modification(id){
+    var request = ajaxOk();
+    var div = document.getElementById("content");
+    var prix = document.getElementById("prix" + id).value;
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = "";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "modifyServiceProduit.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("id=" + id + "&prix=" + prix);
+}
+
+function update_redevance_modification(id){
+    var request = ajaxOk();
+    var div = document.getElementById("content");
+    var prix = document.getElementById("prix" + id).value;
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            div.innerHTML = "";
+            div.innerHTML = request.responseText;
+        }
+    };
+    request.open("POST", "modifyServiceRedevances.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("id=" + id + "&prix=" + prix);
+}
