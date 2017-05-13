@@ -38,7 +38,7 @@ require_once 'view/menu.php';
                                 <div class="cart-left">
                                     <p class="title">atterissage</p>
                                 </div>
-                                <span class="amount item_price">$45.00</span>
+                                
                                 <div class="clearfix"></div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@ require_once 'view/menu.php';
                                 <div class="cart-left">
                                     <p class="title">avitaillement</p>
                                 </div>
-                                <span class="amount item_price">$45.00</span>
+                                
                                 <div class="clearfix"></div>
                             </div>
                         </div>                        
@@ -72,7 +72,7 @@ require_once 'view/menu.php';
                                 <div class="cart-left">
                                     <p class="title">nettoyage</p>
                                 </div>
-                                <span class="amount item_price">$45.00</span>
+                                
                                 <div class="clearfix"></div>
                             </div>
                         </div>
@@ -92,7 +92,7 @@ require_once 'view/menu.php';
                                 <div class="cart-left">
                                     <p class="title">stationnement</p>
                                 </div>
-                                <span class="amount item_price">$45.00</span>
+                                
                                 <div class="clearfix"></div>
                             </div>
                         </div>
@@ -115,7 +115,7 @@ require_once 'view/menu.php';
                                 <div class="cart-left">
                                     <p class="title">cours</p>
                                 </div>
-                                <span class="amount item_price">$45.00</span>
+                                
                                 <div class="clearfix"></div>
                             </div>
                         </div>
@@ -132,7 +132,7 @@ require_once 'view/menu.php';
                                 <div class="cart-left">
                                     <p class="title">bapteme de l\'air</p>
                                 </div>
-                                <span class="amount item_price">$45.00</span>
+                                
                                 <div class="clearfix"></div>
                             </div>
                         </div>                       
@@ -149,7 +149,7 @@ require_once 'view/menu.php';
                                 <div class="cart-left">
                                     <p class="title">parachute</p>
                                 </div>
-                                <span class="amount item_price">$45.00</span>
+                                
                                 <div class="clearfix"></div>
                             </div>
                         </div>
@@ -169,7 +169,7 @@ require_once 'view/menu.php';
                                 <div class="cart-left">
                                     <p class="title">location</p>
                                 </div>
-                                <span class="amount item_price">$45.00</span>
+                                
                                 <div class="clearfix"></div>
                             </div>
                         </div>

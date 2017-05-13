@@ -34,7 +34,7 @@ echo "<table class='table-responsive table table-bordered'>";
 echo "<tr><th>nom</th><th>type</th><th>superficie</th><th>poids</th><th>supprimer</th></tr>";
 while($liste = $query->fetch()){
     echo '<tr>';
-        echo '<td>'.$liste["nom"].'</td>
+        echo '<td>'.nl2br(htmlspecialchars($liste["nom"])).'</td>
                 <td>'.$liste["type_avion"].'</td>
                 <td>'.$liste["superficie"].'</td>
                 <td>'.$liste["poids"].'</td>

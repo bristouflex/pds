@@ -47,9 +47,7 @@ require_once 'view/menu.php';
             </div>
             <div class="cont1 span_2_of_a1 simpleCart_shelfItem">
                 <h1>Baptême de l'air</h1>
-                <div class="price_single">
-                    <span class="amount item_price actual">120.00€</span>
-                </div>
+
                 <h2 class="quick">Description</h2>
                 <p> Faîtes votre premier voyage en avion avec un de nos deux fameux aviateurs de haut-vol!</p><br><br><br>
                 <p align="center">Vald et Alk-pote</p>
@@ -74,17 +72,7 @@ require_once 'view/menu.php';
             </div>
             <div class="clearfix"></div>
         </div>
-        <div class="sap_tabs">
-            <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
-                <ul class="resp-tabs-list">
-                    <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Product Description</span></li>
-                    <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>Additional Information</span></li>
-                    <li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span>Reviews</span></li>
-                    <div class="clear"></div>
-                </ul>
 
-            </div>
-        </div>
     </div>
     </div>
     </div>

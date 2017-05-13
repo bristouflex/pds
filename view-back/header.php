@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../plugins/images/favicon.png">
-    <title>Ample Admin Template - The Ultimate Multipurpose admin template</title>
+    <title>Back-office AEN</title>
     <!-- Bootstrap Core CSS -->
     <link href="css/theme-back/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Menu CSS -->
@@ -50,11 +50,10 @@
             <div class="top-left-part">
                 <!-- Logo -->
                 <a class="logo" href="onlineadmin.php">
-                    <!-- Logo icon image, you can use font-icon also --><b>
-                        <!--This is dark logo icon--><img src="images/admin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="plugins/images/admin-logo-dark.png" alt="home" class="light-logo" />
-                    </b>
-                    <!-- Logo text image you can use text also --><span class="hidden-xs">
-                        <!--This is dark logo text--><img src="images/admin-text.png" alt="home" class="dark-logo" /><!--This is light logo text--><img src="plugins/images/admin-text-dark.png" alt="home" class="light-logo" />
+
+                    <span class="hidden-xs">
+                      <img src="images/admin-text.png" alt="home" class="dark-logo" /><!--This is light logo text-->
+                        <img src="images/admin-text-dark2.png" alt="home" class="light-logo" />
                      </span> </a>
             </div>
             <!-- /Logo -->
