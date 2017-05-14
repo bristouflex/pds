@@ -1,0 +1,15 @@
+curl "http://api.openweathermap.org/data/2.5/weather?id=3019265&appid=4530f696e6e24c57b4ed248cdce5b64b&lang={fr}"
+description":"
+"
+temp":
+,
+pressure":
+,
+humidity":
+,
+speed":
+,
+deg":
+}
+all":
+}
