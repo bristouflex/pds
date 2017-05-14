@@ -32,7 +32,7 @@ $parachute = $_POST["parachute"];
 
 if ($error != 1) {
     $_SESSION["panier"]->setParachute(new Parachute($parachute, $prix, $debut));
-  //  $_SESSION["panier"][5] = [$parachute, $prix, $debut];
+    echo "<p align='center'>achat effectué</p>";
 } else {
     $_SESSION["panier"]->setParachute(null);
 }

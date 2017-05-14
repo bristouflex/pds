@@ -33,7 +33,7 @@ $location = $_POST["location_ulm"];
 
 if ($error != 1) {
     $_SESSION["panier"]-> setLocationUlm( new LocationUlm($location, $prix, $debut));
-  //  $_SESSION["panier"][7] = [$location, $prix, $debut];
+    echo "<p align='center'>achat effectué</p>";
 }else {
     $_SESSION["panier"]->setLocationUlm(null);
 }

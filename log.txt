@@ -27,3 +27,7 @@ bittan@live.fr -> bittan -> Administrateur
 mako@live.fr -> mako -> Client
 mako@live.fr -> mako -> Client
 b.hounza@laposte.net -> bittan -> Client
+baba@live.fr -> baba -> Client
+baba@live.fr -> baba -> Membre
+abdel@live.fr -> baba -> Client
+baba@live.fr -> baba -> Client

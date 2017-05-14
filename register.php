@@ -21,12 +21,12 @@ $secret = '6LcFdBQUAAAAAHnYigmWw4ALqQ8lard80vlmuQMA'; // votre clé privée
 ?>
 
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="fr">
 
     <head>
         <meta charset="utf-8">
         <title>AEN - Inscription</title>
-        <meta name="Description" lang="en" content="Inscription AEN">
+        <meta name="Description" lang="fr" content="Inscription AEN">
         <script src="https://www.google.com/recaptcha/api.js"></script>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
@@ -56,19 +56,19 @@ $secret = '6LcFdBQUAAAAAHnYigmWw4ALqQ8lard80vlmuQMA'; // votre clé privée
                         <div class=" form-group row">
                             <label for="nom" class="col-sm-4 col-form-label">Nom</label>
                             <div class=" col-sm-8">
-                                <input class="form-control" type="text" name="nom" id="nom" placeholder="Nom" value="<?php echo (isset($_POST[" nom "]))?$_POST["nom "]:"";?>" required><br><br>
+                                <input class="form-control" type="text" name="nom" id="nom" placeholder="Nom" value="<?php echo (isset($_POST["nom"]))?$_POST["nom"]:"";?>" required><br><br>
                             </div>
                         </div>
                         <div class="row">
                             <label for="prenom" class="col-sm-4 col-form-label">Prenom</label>
                             <div class=" col-sm-8">
-                                <input class="form-control" type="text" name="prenom" id="prenom" placeholder="Prenom" value="<?php echo (isset($_POST[" prenom "]))?$_POST["prenom "]:"";?>" required><br><br>
+                                <input class="form-control" type="text" name="prenom" id="prenom" placeholder="Prenom" value="<?php echo (isset($_POST["prenom"]))?$_POST["prenom"]:"";?>" required><br><br>
                             </div>
                         </div>
                         <div class="row">
                             <label for="email" class="col-sm-4 col-form-label">Email</label>
                             <div class=" col-sm-8">
-                                <input class="form-control" type="text" name="email" id="email" placeholder="Email" value="<?php echo (isset($_POST[" email "]))?$_POST["email "]:"";?>" required><br><br>
+                                <input class="form-control" type="text" name="email" id="email" placeholder="Email" value="<?php echo (isset($_POST["email"]))?$_POST["email"]:"";?>" required><br><br>
                             </div>
                         </div>
                         <div class="row">
@@ -97,7 +97,7 @@ $secret = '6LcFdBQUAAAAAHnYigmWw4ALqQ8lard80vlmuQMA'; // votre clé privée
                         <div class="row">
                             <label for="genre" class="col-sm-4 col-form-label">Genre:</label>
                             <div class="col-sm-8">
-                                <select name="genre " class="form-control" id="genre">                        
+                                <select name="genre" class="form-control" id="genre">
                                 <?php 
                                 foreach ($list_of_genre as $genre) {
                                     echo "<option ".((isset($_POST["genre"]) && $genre == $_POST["genre"])?"selected='selected'":"").">".$genre."</option>";
@@ -110,19 +110,19 @@ $secret = '6LcFdBQUAAAAAHnYigmWw4ALqQ8lard80vlmuQMA'; // votre clé privée
                         <div class="row">
                             <label for="birth" class="col-sm-4 col-form-label">Date de naissance</label>
                             <div class="col-sm-8">
-                                <input class="form-control" type="date" id="birth" name="birth" placeholder="Votre naissance" value="<?php echo (isset($_POST[" birth "]))?$_POST["birth "]:" "; ?>" required><br><br>
+                                <input class="form-control" type="date" id="birth" name="birth" placeholder="Votre naissance" value="<?php echo (isset($_POST["birth"]))?$_POST["birth"]:" "; ?>" required><br><br>
                             </div>
                         </div>
                         <div class="row">
                             <label for="adresse" class="col-sm-4 col-form-label">Adresse</label>
                             <div class="col-sm-8">
-                                <input type="text" name="adresse" id="adresse" placeholder="rue numero de rue, ville" class="form-control" value="<?php echo (isset($_POST[" adresse "]))?$_POST["adresse "]:"";?>" required><br><br>
+                                <input type="text" name="adresse" id="adresse" placeholder="rue numero de rue, ville" class="form-control" value="<?php echo (isset($_POST["adresse"]))?$_POST["adresse"]:"";?>" required><br><br>
                             </div>
                         </div>
                         <div class="row">
                             <label for="phone" class="col-sm-4 col-form-label">Téléphone</label>
                             <div class="col-sm-8">
-                                <input type="text" name="phone" class="form-control" id="phone" placeholder="Telephone" value="<?php echo (isset($_POST[" phone "]))?$_POST["phone "]:"";?>" required>
+                                <input type="text" name="phone" class="form-control" id="phone" placeholder="Telephone" value="<?php echo (isset($_POST["phone"]))?$_POST["phone"]:"";?>" required>
                             </div>
                         </div>
                         <br>
@@ -142,7 +142,7 @@ $secret = '6LcFdBQUAAAAAHnYigmWw4ALqQ8lard80vlmuQMA'; // votre clé privée
                         <div class="row">
                             <label class="form-check-label col-sm-4 col-form-label">Validation des CGU</label>
                             <div class="form-check col-sm-8">
-                                <input class="form-check-input" type="checkbox"> j'acceptes les clauses du CGU
+                                <input class="form-check-input" type="checkbox" name="cgu"> j'accepte les clauses du CGU
                             </div>
                         </div>
                         <div class="row">

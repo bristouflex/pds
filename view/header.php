@@ -41,7 +41,7 @@
 				<div class="cart_bg">
 					<ul class="cart">
 						<a href="panier.php">
-							<h4><i class="cart_icon"><img src="images/cart.png"/> </i><p>Panier: <span class="" id="total"><?php echo $_SESSION["panier"]->getTotal()."€"; ?></span> </p><div class="clearfix"> </div></h4>
+							<h4><i class="cart_icon"> </i><p>Panier: <span class="" id="total"><?php echo $_SESSION["panier"]->getTotal()."€"; ?></span> </p><div class="clearfix"> </div></h4>
 						</a>
 						<h5 class="empty"><a  class="simpleCart_empty"><?php echo $_SESSION["panier"]->isEmpty()?"panier vide":"achats non validés" ?></a></h5>
 						<div class="clearfix"> </div>

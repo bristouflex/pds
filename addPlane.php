@@ -15,18 +15,22 @@ if (isConnected()) {
 }
 $bdd = connectBdd();
 if(isset($_POST["type"]) && $_POST["nom"] != "" && isset($_POST["superficie"]) && isset($_POST["poids"])){
-    $query = $bdd->prepare("INSERT INTO detention_avion (type_avion, nom, superficie, poids, supprime, inscrit) VALUE (:type, :nom, :superficie, :poids, :supprime, :inscrit)");
-    $query->execute([
-        "type" => $_POST["type"],
-        "nom" => $_POST["nom"],
-        "superficie" => $_POST["superficie"],
-        "poids" => $_POST["poids"],
-        "supprime" => 0,
-        "inscrit" => $_SESSION["user"]->getId()
-    ]);
-    echo "<h1 align='center'>Votre Avion a bien été ajouté</h1>";
-    echo "<p align='center'><button class='btn-primary btn' onclick='display_user_plane()'>retour</button></p>";
-
+    if($_POST["superficie"] > 0.01 && $_POST["poids"] > 0.01) {
+        $query = $bdd->prepare("INSERT INTO detention_avion (type_avion, nom, superficie, poids, supprime, inscrit) VALUE (:type, :nom, :superficie, :poids, :supprime, :inscrit)");
+        $query->execute([
+            "type" => $_POST["type"],
+            "nom" => $_POST["nom"],
+            "superficie" => $_POST["superficie"],
+            "poids" => $_POST["poids"],
+            "supprime" => 0,
+            "inscrit" => $_SESSION["user"]->getId()
+        ]);
+        echo "<h1 align='center'>Votre Avion a bien été ajouté</h1>";
+        echo "<p align='center'><button class='btn-primary btn' onclick='display_user_plane()'>retour</button></p>";
+    }else{
+        echo "<h1 align='center'>Erreur, données saisies non valides</h1>";
+        echo "<p align='center'><button class='btn-primary btn' onclick='display_user_plane()'>retour</button></p>";
+    }
 }else {
 
     echo '<form>

@@ -29,6 +29,7 @@ $prix += $verif[0]; // prix license
 
 if ($error != 1) {
     $_SESSION["panier"]->setCotisation(new Cotisation($cotisation, $license, date("Y-m-d"), $prix));
+    echo "<p align='center'>achat effectué</p>";
 }else {
     $_SESSION["panier"]->setCotisation(null);
 }

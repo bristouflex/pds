@@ -21,6 +21,7 @@ if(!empty($_POST["debut"])){
         $verif = $query->fetch();
         $prix *= $verif[0];
     }
+
     if(!respectLandingChoice($_POST["debut"], $infos["periode"])){
         echo '<b> Le jour selectionné ne correspond pas à l\'offre!</b><br>';
         $error = 1;
@@ -43,6 +44,9 @@ if (verifDateService(strtotime($_POST["debut"])) == FALSE) {
 if(landingPossible($_POST["debut"]) != 1){
     echo "<b> vous ne pouvez pas atterrir à cette heure-ci </b><br>";
     $error = 1;
+}
+if(!empty($_POST['reduc']) && $_POST['reduc'] == 1){
+    $prix /= 2;
 }
 $prix += $verif[0]; // redevance balisage
 

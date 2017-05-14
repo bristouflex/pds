@@ -192,6 +192,7 @@ function checker_atterissage() {
     }
     var debut = document.getElementsByName("debut_atterissage")[0].value;
     var data2 = document.getElementsByName("categorie");
+    var reduc = document.getElementById("reduc").value;
     for (i = 0; i < data2.length; i++) {
         if (data2[i].checked === true) {
             var categorie = data2[i].value;
@@ -209,7 +210,7 @@ function checker_atterissage() {
     }
     request.open("POST", "ajax_validate/validate_atterissage.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send("avion=" + avion + "&categorie=" + categorie + "&debut=" + debut);
+    request.send("avion=" + avion + "&categorie=" + categorie + "&debut=" + debut+"&reduc="+reduc);
 }
 
 function t1() {

@@ -43,9 +43,10 @@ $resultat = $query->fetchall();
                 echo "</tr>";
             }
         }
+        echo "<input type='hidden' id='reduc' value='0'>";
     }
     echo "</div>";
-    echo "</table></div>";
+    echo "</table>";
 echo '<div class="table-responsive table-bordered"> <table class="table">';
 echo '<tr> 
     <th>groupe accoustique</th>
@@ -69,6 +70,6 @@ if (empty($resultat)) {
 echo "</table></div>";
 echo "<p align='center'><input type='datetime-local' name='debut_atterissage' required></p>"; //on détermine le prix à payer en fonction de l'heure selectionnée
 echo "<button type=\"button\" class=\"btn btn-secondary btn-lg btn-block\" onclick=\"checker_atterissage()\">valider avitaillement</button>";
-echo "</table></div>";
+echo "</table></div></div>";
 
 

@@ -23,7 +23,7 @@ if($find == 0){
 if ($error != 1 && $find == 1) {
 
     $_SESSION["panier"]->setNettoyage(new Nettoyage($_POST["produit"], $_POST["debut"], $prix));
-
+    echo "<p align='center'>achat effectué</p>";
 }else{
     $_SESSION["panier"]->setNettoyage(null);
 }

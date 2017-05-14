@@ -38,6 +38,7 @@ $lecon = $_POST["lecon"];
 
 if ($error != 1) {
     $_SESSION["panier"]->setLecon(new Lecon($instructeur, $prix, $debut, $lecon));
+    echo "<p align='center'>achat effectué</p>";
 }else {
     $_SESSION["panier"]->setLecon(null);
 }

@@ -37,7 +37,7 @@ $bapteme = $_POST["bapteme"];
 
 if ($error != 1) {
     $_SESSION["panier"]-> setBapteme(new Bapteme($bapteme, $instructeur, $prix, $debut));
-  //  $_SESSION["panier"][4] = [$bapteme, $instructeur, $prix, $debut];
+    echo "<p align='center'>achat effectué</p>";
 }else {
     $_SESSION["panier"]->setBapteme(null);
 }
